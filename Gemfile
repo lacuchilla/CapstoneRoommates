@@ -27,7 +27,7 @@ gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'
 
 gem 'omniauth-twitter'
-
+gem 'omniauth-facebook'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 

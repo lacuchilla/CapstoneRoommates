@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'users/show'
+  root "users#show"
 
-  root to: "users#show"
+  get '/login' => 'sessions#new', :as => :login
+  get '/logout' => 'sessions#destroy'
 
-  get '/login' => 'sessions#new'
-  delete '/logout' => 'sessions#destroy'
-
-  get "/auth/twitter/callback", to: "sessions#create"
+  get "/auth/:provider/callback", to: "sessions#create"
 
   post "/auth/developer/callback", to: "sessions#create"
 
