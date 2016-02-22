@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+
   root to: "users#show"
 
   get '/login' => 'sessions#new'

@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
       user.uid        = auth_hash["uid"]
       user.provider   = auth_hash["provider"]
       user.username   = auth_hash["info"]["username"]
-      if !user.image_url.present?
-        user.image_url = "blank.png"
+      if !user.avatar_url.present?
+        user.avatar_url = "blank.png"
       end
       if user.save
         return user
@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
       user.uid        = auth_hash["uid"]
       user.provider   = auth_hash["provider"]
       user.username   = auth_hash["info"]["nickname"]
-      if !user.image_url.present?
-        user.image_url = "blank.png"
+      if !user.avatar_url.present?
+        user.avatar_url = "blank.png"
       end
       if user.save
         return user
