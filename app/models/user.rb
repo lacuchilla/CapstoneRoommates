@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   validates :uid, :username, :provider, presence: true
   validates :uid, :username, uniqueness: true
-  
+
   def self.find_or_create_from_omniauth(auth_hash)
     user = self.find_by(uid: auth_hash["uid"], provider: auth_hash["provider"] )
     if !user.nil?
@@ -36,5 +36,9 @@ class User < ActiveRecord::Base
         return nil
       end
     end
+  end
+
+  def self.create_from_omniauth(auth_hash)
+  # Create a user
   end
 end
