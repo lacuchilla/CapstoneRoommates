@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+seed_bills = [
+  {name: "April Rent", total_amount: 50000, number_of_people_responsible: 3, names_of_people_responsible: "Waddle Dee, Waddle Doo, Metaknight"}
+]
+
+seed_bills.each do |bill|
+  Bill.create(bill)
+end

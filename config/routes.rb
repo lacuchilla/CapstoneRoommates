@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :bills
-  root "users#show"
+  root "users#index"
 
   get '/login' => 'sessions#new', :as => :login
   get '/logout' => 'sessions#destroy'

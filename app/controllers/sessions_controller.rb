@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_action :current_user
-  protect_from_forgery with: :null_session
 
   def new
     provider = params[:format]

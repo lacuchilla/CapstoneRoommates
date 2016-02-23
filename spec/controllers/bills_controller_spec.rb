@@ -12,255 +12,137 @@ RSpec.describe BillsController, type: :controller do
   end
 
   describe "GET 'new'" do
-    let(:bill) do
-      Bill.create(name: "MyString",
-        total_amount: 1,
-        number_of_people_responsible: 1,
-        names_of_people_responsible: "MyString")
-    end
-
-    it "renders the new template" do
+    it "renders the new view" do
       get :new
       expect(subject).to render_template :new
     end
   end
 
   describe "GET 'show'" do
-    let(:user) do
-      User.create(first_name: "Someone",
-                  last_name: "Else",
-                  email: "7@7.co",
-                  password: "pass",
-                  password_confirmation: "pass")
-    end
-
     it "renders the show view" do
-      get :show, id: product.id
+      new_bill.save
+      get :show, id: new_bill.id
       expect(subject).to render_template :show
     end
   end
 
   describe "GET 'edit'" do
-    before(:each) do
-      session[:user_id] = user.id
-    end
-    let(:user) do
-      User.create(first_name: "Someone",
-                  last_name: "Else",
-                  email: "7@7.co",
-                  password: "pass",
-                  password_confirmation: "pass")
-    end
-
     it "renders the edit view" do
-      get :edit, id: product.id, user_id: user.id
+      new_bill.save
+      get :edit, id: new_bill.id
       expect(subject).to render_template :edit
     end
   end
 
-  describe "POST 'review'" do
-    let(:params) do
-      {
-        review:{
-          rating: "3",
-          review_text: "An average rating",
+  describe "POST 'create'" do
+    let(:bill_params) do
+    {
+      bill:{
+        name: "May Rent",
+        total_amount: 50000,
+        number_of_people_responsible: 3,
+        names_of_people_responsible: "Prince Fluff, Yin Yarn, Adeleine"
         }
       }
     end
 
-    let(:user) do
-      User.create(first_name: "Someone",
-                  last_name: "Else",
-                  email: "7@7.co",
-                  password: "pass",
-                  password_confirmation: "pass")
-    end
-
-
-    let(:user_2) do
-      User.create(first_name: "New",
-                    last_name: "Person",
-                    email: "8@8.co",
-                    password: "pass",
-                    password_confirmation: "pass")
-    end
-
-
-
-    it "creates a new review of a product" do
-      post :review, params.merge(product_id: 1)
-      last_review = Review.last
-      expect(last_review.review_text).to eq "An average rating"
-    end
-
-    it "doesn't allow users to review their own products" do
-      user
-      user_2
-      product
-      session[:user_id] = 2
-      post :review, params.merge(product_id: 1)
-      expect(subject).to redirect_to user_product_path(session[:user_id],1)
-      expect(flash[:error]).to include "You can NOT review your own products"
-    end
-  end
-
-  describe "POST 'create'" do
-    let(:user) do
-      User.create(first_name: "Someone",
-                  last_name: "Else",
-                  email: "7@7.co",
-                  password: "pass",
-                  password_confirmation: "pass")
-    end
-
-    let(:params) do
+    let(:bad_bill_params) do
       {
-        product:{
-          name: "For Sea Was He",
-          description: "A gregarious, lovable sailor",
-          price: 2500,
-          retired: false,
-          inventory_total: 20,
-          image_url: "http://www.hdwallpapers.in/walls/maltese_puppy-wide.jpg",
-          user_id: 4
-        },
-        categories: []
+        bill:{
+          name: nil
+        }
       }
     end
 
-    let(:bad_params) do
-      {
-        product:{
-          name: nil,
-          price: nil
-        },
-        categories: []
-      }
+    it "creates a bill" do
+      new_bill.save
+      last_bill = Bill.last
+      post :create, bill_params
+      expect(Bill.last).to_not eq last_bill
     end
 
-    before :each do
-      session[:user_id] = user.id
+    it "does not create a bill when bad params are used" do
+      last_bill = Bill.last
+      post :create, bad_bill_params
+      expect(Bill.last).to eq last_bill
     end
 
-    it "creates a product with good params" do
-      last_product = Product.last
-      post :create, params.merge(user_id: user.id)
-      expect(Product.last).to_not eq last_product
-    end
-
-    it "does not create a product when bad params are used" do
-      last_product = Product.last
-      post :create, bad_params.merge(user_id: user.id)
-      expect(Product.last).to eq last_product
-    end
-
-    it "redirects to products user page when good params are passed" do
-      post :create, params.merge(user_id: user.id)
+    it "redirects to bills index page" do
+      post :create, bill_params
       # Success case to index page
-      expect(subject).to redirect_to user_path(user.id)
+      expect(subject).to redirect_to bills_path
       # Error case to
-    end
-
-    it "renders the edit template when bad params are passed" do
-      post :create, bad_params.merge(user_id: user.id)
+      post :create, bad_bill_params
       expect(subject).to render_template :new
     end
   end
 
   describe "PATCH 'update'" do
-    let(:user) do
-      User.create(first_name: "Someone",
-                  last_name: "Else",
-                  email: "7@7.co",
-                  password: "pass",
-                  password_confirmation: "pass")
-    end
-
-    before :each do
-      session[:user_id] = user.id
-    end
-
-    let(:params) do
-      {
-        product:{
-          name: "For Sea Was He",
-          description: "A gregarious, lovable sailor",
-          price: 2500,
-          retired: false,
-          image_url: "http://www.hdwallpapers.in/walls/maltese_puppy-wide.jpg",
-          user_id: 4
-        },
-        id: product.id,
-        categories: []
+    let(:bill_params) do
+    {
+      bill:{
+        name: "June Rent",
+        total_amount: 50000,
+        number_of_people_responsible: 3,
+        names_of_people_responsible: "Prince Fluff, Yin Yarn, Adeleine"
       }
+    }
+  end
+
+  let(:bad_bill_params) do
+    {
+      bill:{
+        name: nil
+      }
+    }
+  end
+
+
+    it "updates the bill with good params" do
+      new_bill.save
+
+      before_update = new_bill.attributes
+      patch :update, bill_params
+      new_bill.reload
+      expect(bill.attributes).to_not eq before_update
     end
 
-    it "updates the product with good params" do
-      before_update = product.attributes
-      patch :update, params.merge(user_id: user.id, id: product.id)
-      product.reload
-      expect(product.attributes).to_not eq before_update
+    it "does not update the bill with bad params" do
+      new_bill.save
+      before_update = new_bill.attributes
+      patch :update, bad_bill_params
+      bill.reload
+      expect(bill.attributes).to eq before_update
     end
 
-    it "redirects to the user page after a successful update" do
-      patch :update, params.merge(user_id: user.id, id: product.id)
+    it "redirects to the bill's show page after a successful update" do
+      patch :update, bill_params
       # Success case to index page
-      expect(subject).to redirect_to user_path(user.id)
-    end
-
-    let(:bad_params) do
-      {
-        product:{
-          name: nil,
-          price: nil
-        },
-        id: product.id,
-        categories: []
-      }
-    end
-
-    it "does not update the product with bad params" do
-      before_update = product.attributes
-      patch :update, bad_params.merge(user_id: user.id, id: product.id)
-      product.reload
-      expect(product.attributes).to eq before_update
-    end
-
-    it "renders the template to update a product with bad params" do
+      expect(subject).to redirect_to bill_path
       # Error case to
-      patch :update, bad_params.merge(user_id: user.id, id: product.id)
+      patch :update, bad_bill_params
       expect(subject).to render_template :edit
     end
   end
 
-  describe "POST 'retire'" do
-    let(:user) do
-      User.create(first_name: "Someone",
-                  last_name: "Else",
-                  email: "7@7.co",
-                  password: "pass",
-                  password_confirmation: "pass")
+  describe "DELETE 'destroy'" do
+    let(:params) do
+      {
+        id: new_bill.id
+      }
     end
 
-    let(:user_2) do
-      User.create(first_name: "New",
-                  last_name: "Person",
-                  email: "8@8.co",
-                  password: "pass",
-                  password_confirmation: "pass")
+    it "deletes a bill" do
+      new_bill.save
+      expect(Bill.all). to include(new_bill)
+      delete :destroy, params
+      expect(Bill.all).to_not include(new_bill)
     end
 
-    it "sets the status of a product to retired" do
-      session[:user_id] = user.id
-      post :retire, product_id: product.id, user_id: user.id
-      product.reload
-      expect(product.retired).to eq true
-    end
-
-    it "redirects to the user path" do
-      session[:user_id] = user.id
-      post :retire, product_id: product.id, user_id: user.id
-      expect(subject).to redirect_to user_path(user.id)
+    it "renders the all bills view" do
+      get :index
+      expect(subject).to render_template :index
     end
   end
+
 end
