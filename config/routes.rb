@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bills
   root "users#show"
 
   get '/login' => 'sessions#new', :as => :login

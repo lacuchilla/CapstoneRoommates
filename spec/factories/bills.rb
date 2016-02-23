@@ -5,5 +5,6 @@ FactoryGirl.define do
     number_of_people_responsible 1
     names_of_people_responsible "MyString"
     paid false
+    due_date Time.now
   end
 end
