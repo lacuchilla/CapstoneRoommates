@@ -5,5 +5,6 @@ FactoryGirl.define do
     uid "MyString"
     provider "MyString"
     avatar_url "MyString"
+    image_url "MyString"
   end
 end
