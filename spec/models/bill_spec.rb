@@ -38,5 +38,11 @@ RSpec.describe Bill, type: :model do
       new_bill.due_date = nil
       expect(new_bill).to be_invalid
     end
+
+    it "requires a paid status" do
+      new_bill.paid = nil
+      byebug
+      expect(new_bill).to be_invalid
+    end
   end
 end

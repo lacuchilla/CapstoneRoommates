@@ -41,7 +41,8 @@ RSpec.describe BillsController, type: :controller do
         name: "May Rent",
         total_amount: 50000,
         number_of_people_responsible: 3,
-        names_of_people_responsible: "Prince Fluff, Yin Yarn, Adeleine"
+        names_of_people_responsible: "Prince Fluff, Yin Yarn, Adeleine",
+        paid: false
         }
       }
     end
