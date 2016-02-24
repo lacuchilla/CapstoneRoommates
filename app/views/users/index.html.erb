@@ -1,5 +1,12 @@
 <% if current_user.nil? %>
   <h1><a href="/auth/twitter">Log In With Twitter</a></h1>
 <% else %>
-  <h1><%= link_to "Log Out", logout_path %></li>
+  <h6><%= link_to "Log Out", logout_path %></li>
+  <% @bills.each do |bill| %>
+    <h5>Current Bills</h5>
+    <ul>
+      <li><%= bill.name %></li>
+      <li><%= bill.total_amount %></li>
+    </ul>
+  <% end %>
 <% end %>

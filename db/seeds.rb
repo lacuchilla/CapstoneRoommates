@@ -12,3 +12,11 @@ seed_bills = [
 seed_bills.each do |bill|
   Bill.create(bill)
 end
+
+seed_users = [
+  {}
+]
+
+seed_users.each do |user|
+  User.create(user)
+end

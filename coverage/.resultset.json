@@ -60,14 +60,23 @@
         1,
         null,
         1,
-        17,
+        16,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
         null,
         null,
         null
       ],
       "/Users/amyhunter/Desktop/capstone/roommates/app/controllers/sessions_controller.rb": [
-        1,
-        1,
         1,
         1,
         null,
@@ -92,15 +101,28 @@
       "/Users/amyhunter/Desktop/capstone/roommates/app/controllers/users_controller.rb": [
         1,
         1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
         null,
         null
       ],
       "/Users/amyhunter/Desktop/capstone/roommates/app/models/bill.rb": [
         1,
         1,
+        1,
+        null
+      ],
+      "/Users/amyhunter/Desktop/capstone/roommates/app/models/share.rb": [
+        1,
         null
       ],
       "/Users/amyhunter/Desktop/capstone/roommates/app/models/user.rb": [
+        1,
+        1,
         1,
         null,
         1,
@@ -134,6 +156,6 @@
         null
       ]
     },
-    "timestamp": 1456267072
+    "timestamp": 1456272975
   }
 }

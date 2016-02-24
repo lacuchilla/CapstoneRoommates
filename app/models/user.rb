@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  belongs_to :household
+  has_many :bills, :through => :shares
 
   validates :uid, :username, :provider, presence: true
   validates :uid, :username, uniqueness: true
