@@ -1,10 +1,11 @@
 <div>
-  <%= @bill.name %>
-  <%= @bill.total_amount %>
-  <%= @bill.number_of_people_responsible %>
-  <%= @bill.names_of_people_responsible %>
-  <%= @bill.paid %>
-  <%= @bill.due_date %>
+  <h3>Bill Details</h3>
+    <p>Bill Name: <%= @bill.name %></p>
+    <p>Total Amount: <%= @bill.total_amount %>
+    <p>Number of People Responsible: <%= @bill.number_of_people_responsible %></p>
+    <p>Names of People Responsible: <%= @bill.names_of_people_responsible %></li>
+    <p>Payment Status of Bill: <%= @bill.paid %></p>
+    <p>Bill Due Date: <%= @date.strftime("%m/%d/%Y") %></p>
   <%= link_to "View All Bills", bills_path, class: "btn btn-default" %>
   <%= link_to "Return to Home Page", root_path, class: "btn btn-default"%>
 <div>

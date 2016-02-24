@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Bill, type: :model do
-  let(:new_bill) { build(:bill) }
-  let(:bad_bill) { build(:bill, username: "something") }
+  let(:new_bill) { create(:bill) }
+  let(:bad_bill) { create(:bill, username: "something") }
 
   describe "validations" do
     it "is valid" do
@@ -41,7 +41,6 @@ RSpec.describe Bill, type: :model do
 
     it "requires a paid status" do
       new_bill.paid = nil
-      byebug
       expect(new_bill).to be_invalid
     end
   end

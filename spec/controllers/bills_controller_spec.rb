@@ -85,7 +85,8 @@ RSpec.describe BillsController, type: :controller do
         name: "June Rent",
         total_amount: 50000,
         number_of_people_responsible: 3,
-        names_of_people_responsible: "Prince Fluff, Yin Yarn, Adeleine"
+        names_of_people_responsible: "Prince Fluff, Yin Yarn, Adeleine",
+        paid: false
       }
     }
   end
@@ -101,19 +102,18 @@ RSpec.describe BillsController, type: :controller do
 
     it "updates the bill with good params" do
       new_bill.save
-
       before_update = new_bill.attributes
-      patch :update, bill_params
+      patch :update, bill_params.merge(id: new_bill.id)
       new_bill.reload
-      expect(bill.attributes).to_not eq before_update
+      expect(new_bill.attributes).to_not eq before_update
     end
 
     it "does not update the bill with bad params" do
       new_bill.save
       before_update = new_bill.attributes
       patch :update, bad_bill_params
-      bill.reload
-      expect(bill.attributes).to eq before_update
+      new_bill.reload
+      expect(new_bill.attributes).to eq before_update
     end
 
     it "redirects to the bill's show page after a successful update" do
@@ -141,8 +141,9 @@ RSpec.describe BillsController, type: :controller do
     end
 
     it "renders the all bills view" do
-      get :index
-      expect(subject).to render_template :index
+      new_bill.save
+      delete :destroy, params
+      expect(subject).to redirect_to bills_path
     end
   end
 

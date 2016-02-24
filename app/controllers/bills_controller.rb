@@ -18,6 +18,7 @@ class BillsController < ApplicationController
 
   def show
     @bill = Bill.find(params[:id])
+    @date = @bill.due_date
   end
 
   def edit
