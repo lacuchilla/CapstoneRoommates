@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'pry'
+  gem 'rails-erd'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'vcr', '2.2.5'
 
@@ -57,7 +58,6 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem "better_errors" # These two are just for debugging
   gem "binding_of_caller"
-  gem 'rails-erd'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

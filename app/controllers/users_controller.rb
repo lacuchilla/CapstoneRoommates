@@ -3,8 +3,6 @@ class UsersController < ApplicationController
     @bills = Bill.all
   end
 
-
-
   def show
   end
 end

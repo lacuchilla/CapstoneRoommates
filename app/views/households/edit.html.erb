@@ -1,0 +1,14 @@
+<%= form_for @household do |b| %>
+  <fieldset>
+    <legend><%= @legend %></legend>
+    <%= b.label :name %>
+    <%= b.text_field :name %>
+    <%= b.label :address %>
+    <%= b.text_field :address %>
+    <%= b.label :move_in_date %>
+    <%= b.text_field :move_in_date %>
+  </fieldset>
+  <%= b.submit("Save") %>
+<% end%>
+<%= link_to "View All Households", househholds_path, class: "btn btn-default" %>
+<%= link_to "Back to home page", root_path, class: "btn btn-default" %>

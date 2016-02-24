@@ -1,0 +1,14 @@
+<%= form_for @share do |b| %>
+  <fieldset>
+    <legend><%= @legend %></legend>
+    <%= b.label :due_date %>
+    <%= b.text_field :due_date %>
+    <%= b.label :share_amount %>
+    <%= b.text_field :share_amount %>
+    <%= b.label :paid %>
+    <%= b.text_field :paid %>
+  </fieldset>
+  <%= b.submit("Save") %>
+<% end%>
+<%= link_to "View All Shares", shares_path, class: "btn btn-default" %>
+<%= link_to "Back to home page", root_path, class: "btn btn-default" %>

@@ -1,0 +1,3 @@
+<% @shares.each do |share| %>
+  <%= link_to "#{share.name}", share_path(share.id) %>
+<% end %>

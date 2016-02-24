@@ -1,0 +1,18 @@
+<%= form_for @bill do |b| %>
+  <fieldset>
+    <legend><%= @legend %></legend>
+    <%= b.label :name %>
+    <%= b.text_field :name %>
+    <%= b.label :total_amount %>
+    <%= b.text_field :total_amount %>
+    <%= b.label :number_of_people_responsible %>
+    <%= b.text_field :number_of_people_responsible %>
+    <%= b.label :names_of_people_responsible %>
+    <%= b.text_field :names_of_people_responsible %>
+    <%= b.label :paid %>
+    <%= b.text_field :paid %>
+  </fieldset>
+  <%= b.submit("Save") %>
+<% end%>
+<%= link_to "View All Bills", bills_path, class: "btn btn-default" %>
+<%= link_to "Back to home page", root_path, class: "btn btn-default" %>

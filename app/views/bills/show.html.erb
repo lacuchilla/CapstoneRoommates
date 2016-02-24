@@ -1,0 +1,10 @@
+<div>
+  <%= @bill.name %>
+  <%= @bill.total_amount %>
+  <%= @bill.number_of_people_responsible %>
+  <%= @bill.names_of_people_responsible %>
+  <%= @bill.paid %>
+  <%= @bill.due_date %>
+  <%= link_to "View All Bills", bills_path, class: "btn btn-default" %>
+  <%= link_to "Return to Home Page", root_path, class: "btn btn-default"%>
+<div>
