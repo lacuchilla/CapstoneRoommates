@@ -22,6 +22,7 @@
         null,
         1,
         1,
+        1,
         null,
         null,
         1,
@@ -209,6 +210,7 @@
         1,
         1,
         1,
+        1,
         null
       ],
       "/Users/amyhunter/Desktop/capstone/roommates/app/models/household.rb": [
@@ -259,6 +261,6 @@
         null
       ]
     },
-    "timestamp": 1456353693
+    "timestamp": 1456421303
   }
 }

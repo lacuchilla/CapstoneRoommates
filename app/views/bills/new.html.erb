@@ -11,6 +11,12 @@
     <%= b.text_field :names_of_people_responsible %>
     <%= b.label :paid %>
     <%= b.text_field :paid %>
+    <div><%= b.label :paid, "Not Paid" %>
+     <%= b.radio_button :paid, false , :checked => true , :value => false %></div>
+
+ <br>
+ <div><%= label :paid, "Paid"%>
+      <%= b.radio_button :paid, true, :value => true %></div>
     <%= b.label :due_date %>
     <%= b.date_field :due_date %>
   </fieldset>
