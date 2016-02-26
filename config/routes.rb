@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  get '/bills/new_share' => 'bills#new_share'
+  post '/bills/create_share' => 'bills#create_share'
 
   resources :households
   resources :users
   resources :bills
-  resources :shares
-  
+
   root "users#index"
+
 
   get '/login' => 'sessions#new', :as => :login
   get '/logout' => 'sessions#destroy'

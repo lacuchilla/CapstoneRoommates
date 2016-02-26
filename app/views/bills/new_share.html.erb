@@ -1,12 +1,13 @@
-<%= form_for @bill do |b| %>
+<%= form_for @bill, :url => bills_create_share_path , :html => {:method => :post} do |b| %>
   <fieldset>
     <legend><%= @legend %></legend>
     <%= b.label :name %>
-    <%= b.text_field :name %>
+    <%= b.text_field :name, :value => "July Rent" %>
     <%= b.label :total_amount %>
     <%= b.text_field :total_amount %>
     <%= b.label :due_date %>
     <%= b.date_field :due_date %>
+    <%= hidden_field_tag(:parent_key, "1") %>
   </fieldset>
   <%= b.submit("Save") %>
 <% end%>

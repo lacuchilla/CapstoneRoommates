@@ -1,4 +1,4 @@
 class Share < ActiveRecord::Base
-  belongs_to :users
-  belongs_to :bills
+  belongs_to :user
+  belongs_to :bill
 end

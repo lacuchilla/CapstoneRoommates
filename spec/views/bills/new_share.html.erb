@@ -1,4 +1,4 @@
-<%= form_for @bill do |b| %>
+<%= form_for @share do |b| %>
   <fieldset>
     <legend><%= @legend %></legend>
     <%= b.label :name %>
@@ -10,5 +10,5 @@
   </fieldset>
   <%= b.submit("Save") %>
 <% end%>
-<%= link_to "View All Bills", bills_path, class: "btn btn-default" %>
+<%= link_to "View All Bills", shares_path, class: "btn btn-default" %>
 <%= link_to "Back to home page", root_path, class: "btn btn-default" %>
