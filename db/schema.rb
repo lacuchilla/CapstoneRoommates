@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225232858) do
+ActiveRecord::Schema.define(version: 20160226013751) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name"
@@ -50,9 +50,10 @@ ActiveRecord::Schema.define(version: 20160225232858) do
     t.string   "uid"
     t.string   "provider"
     t.string   "avatar_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "image_url"
+    t.integer  "household_id"
   end
 
 end

@@ -4,7 +4,7 @@ class BillsController < ApplicationController
     @bills = Bill.all
     @specific_household = Household.find(params[:household_id])
   # @company = Company.person.find(@company_id(params[:id]))
-    @specific_household.bills
+    @household_bills = @specific_household.bills
   end
 
   def new
@@ -12,7 +12,7 @@ class BillsController < ApplicationController
   end
 
   def create
-    @bill = Bill.create(name: bill_params[:bill][:name], total_amount: bill_params[:bill][:total_amount], paid: bill_params[:bill][:paid], household_id: params[:household_id)
+    @bill = Bill.create(name: bill_params[:bill][:name], total_amount: bill_params[:bill][:total_amount], paid: bill_params[:bill][:paid], household_id: params[:household_id])
     if @bill.save
       redirect_to bills_path
     else
