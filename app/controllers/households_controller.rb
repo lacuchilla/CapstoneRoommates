@@ -1,6 +1,7 @@
 class HouseholdsController < ApplicationController
   def index
     @households = Household.all
+    @specific_bill = Household.find(params[:household_id])
   end
 
   def new
@@ -37,6 +38,6 @@ class HouseholdsController < ApplicationController
 
 private
   def share_params
-    params.permit(person: [:bill_id, :due_date, :share_amount, :paid])
+    params.permit(person: [:bill_id, :due_date, :share_amount, :paid, :user_id])
   end
 end

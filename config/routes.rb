@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :households
   resources :users
   resources :bills
+  resources :shares
+
+  resources :bills do
+    resources :shares
+  end
 
   root "users#index"
 

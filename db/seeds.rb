@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 seed_bills = [
-  {name: "April Rent", total_amount: 50000, number_of_people_responsible: 3, names_of_people_responsible: "Waddle Dee, Waddle Doo, Metaknight", due_date: "2016-04-01 00:00:00", household_id: 1},
-  {name: "May Rent", total_amount: 50000, number_of_people_responsible: 3, names_of_people_responsible: "Waddle Dee, Waddle Doo, Metaknight", due_date: "2016-05-01 00:00:00", household_id: 1},
-  {name: "June Rent", total_amount: 50000, number_of_people_responsible: 3, names_of_people_responsible: "Waddle Dee, Waddle Doo, Metaknight", due_date: "2016-06-01 00:00:00", household_id: 1},
-  {name: "July Rent", total_amount: 50000, number_of_people_responsible: 3, names_of_people_responsible: "Waddle Dee, Waddle Doo, Metaknight", due_date: "2016-07-01 00:00:00", household_id: 1},
-  {name: "August Rent", total_amount: 50000, number_of_people_responsible: 3, names_of_people_responsible: "Waddle Dee, Waddle Doo, Metaknight", due_date: "2016-08-01 00:00:00", household_id: 1}
+  {name: "April Rent", total_amount: 50000, due_date: "2016-04-01 00:00:00", household_id: 1},
+  {name: "May Rent", total_amount: 50000, due_date: "2016-05-01 00:00:00", household_id: 1},
+  {name: "June Rent", total_amount: 50000, due_date: "2016-06-01 00:00:00", household_id: 1},
+  {name: "July Rent", total_amount: 50000, due_date: "2016-07-01 00:00:00", household_id: 1},
+  {name: "August Rent", total_amount: 50000, due_date: "2016-08-01 00:00:00", household_id: 1}
 ]
 
 seed_bills.each do |bill|

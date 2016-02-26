@@ -1,7 +1,9 @@
 class SharesController < ApplicationController
   def index
-    @specific_bill = Bill.find(params[:bill_id])
-    @specific_bill.shares
+    @specific_user = User.find(user_id: params[:user_id])
+    # @shares = @specific_bill.shares
+
+    @shares = @specific_user.shares
   end
 
   def new
@@ -9,8 +11,12 @@ class SharesController < ApplicationController
   end
 
   def create
-    @share = Share.create(bill_id: params[:bill_id], due_date: share_params[:share][:due_date], share_amount: share_params[:share][:share_amount])
-    redirect_to shares_path(params[:share_id])
+    @share = Share.create(share_params)
+      if @share.save
+        redirect_to bills_path(params[:bill_id])
+      else
+        render :new
+      end
   end
 
   def show
@@ -38,6 +44,6 @@ class SharesController < ApplicationController
 
 private
   def share_params
-    params.permit(person: [:bill_id, :due_date, :share_amount, :paid])
+    params.permit(person: [:bill_id, :due_date, :share_amount, :paid, :user_id])
   end
 end

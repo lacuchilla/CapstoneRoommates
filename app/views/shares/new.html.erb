@@ -2,11 +2,13 @@
   <fieldset>
     <legend><%= @legend %></legend>
     <%= b.label :due_date %>
-    <%= b.text_field :due_date %>
+    <%= b.date_field :due_date %>
     <%= b.label :share_amount %>
     <%= b.text_field :share_amount %>
+    <%= b.label :person_responsible %>
+    <%= b.collection_select(:user_id, User.all, :id, :username, prompt: "Select") %>
     <%= b.label :paid %>
-    <%= b.text_field :paid %>
+    <%= b.check_box :paid %>
   </fieldset>
   <%= b.submit("Save") %>
 <% end%>
