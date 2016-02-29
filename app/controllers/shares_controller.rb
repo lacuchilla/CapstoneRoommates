@@ -1,9 +1,6 @@
 class SharesController < ApplicationController
   def index
-    @specific_user = User.find(user_id: params[:user_id])
-    # @shares = @specific_bill.shares
-
-    @shares = @specific_user.shares
+    @shares = Share.all
   end
 
   def new
@@ -11,9 +8,9 @@ class SharesController < ApplicationController
   end
 
   def create
-    @share = Share.create(share_params)
+    @share = Share.create(share_params[:share])
       if @share.save
-        redirect_to bills_path(params[:bill_id])
+        redirect_to household_bill_shares_path
       else
         render :new
       end
@@ -31,7 +28,7 @@ class SharesController < ApplicationController
   def update
     @share = Share.update(params[:id], share_params[:share])
       if @share.save
-        redirect_to share_path(params[:id])
+        redirect_to household_bill_shares_path
       else
         render :edit
       end
@@ -39,11 +36,11 @@ class SharesController < ApplicationController
 
   def destroy
     Share.destroy(params[:id])
-    redirect_to shares_path
+    redirect_to household_bill_shares_path
   end
 
 private
   def share_params
-    params.permit(person: [:bill_id, :due_date, :share_amount, :paid, :user_id])
+    params.permit(share: [:bill_id, :due_date, :share_amount, :paid, :household_id])
   end
 end
