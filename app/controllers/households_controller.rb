@@ -8,7 +8,7 @@ class HouseholdsController < ApplicationController
   end
 
   def create
-    @household = Household.create(household_params)
+    @household = Household.create(household_params[:household])
     if @household.save
       redirect_to households_path
     else
@@ -41,6 +41,6 @@ class HouseholdsController < ApplicationController
 
 private
   def household_params
-    params.require(:household).permit(:name, :address, :move_in_date)
+    params.permit(household: [:name, :address, :move_in_date])
   end
 end

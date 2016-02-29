@@ -134,7 +134,7 @@ RSpec.describe HouseholdsController, type: :controller do
 
       it "renders the all households view" do
         delete :destroy, params
-        expect(subject).to render_template :index
+        expect(subject).to redirect_to households_path
       end
     end
 
