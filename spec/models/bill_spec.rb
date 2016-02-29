@@ -19,16 +19,6 @@ RSpec.describe Bill, type: :model do
       expect(new_bill).to be_invalid
     end
 
-    it "requires a number of people responsible" do
-      new_bill.number_of_people_responsible = nil
-      expect(new_bill).to be_invalid
-    end
-
-    it "requires the names of people responsible" do
-      new_bill.names_of_people_responsible = nil
-      expect(new_bill).to be_invalid
-    end
-
     it "requires a paid status" do
       new_bill.paid = nil
       expect(new_bill).to be_invalid

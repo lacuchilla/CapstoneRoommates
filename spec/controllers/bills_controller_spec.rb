@@ -42,6 +42,7 @@ RSpec.describe BillsController, type: :controller do
           name: "May Rent",
           total_amount: 50000,
           paid: false,
+          due_date: "2016-02-29 19:41:22"
         },
         household_id: 1
       }
