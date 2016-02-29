@@ -101,57 +101,39 @@ RSpec.describe HouseholdsController, type: :controller do
         expect(new_household.attributes).to_not eq before_update
       end
 
-      it "does not update the album with bad params" do
-        before_update = album.attributes
+      it "does not update the household with bad params" do
+        new_household.save
+        before_update = new_household.attributes
         patch :update, bad_params
-        album.reload
-        expect(album.attributes).to eq before_update
+        new_household.reload
+        expect(new_household.attributes).to eq before_update
       end
 
-      it "redirects to the album's show page after a successful update" do
+      it "redirects to the household's show page after a successful update" do
         patch :update, params
         # Success case to index page
-        expect(subject).to redirect_to album_path
+        expect(subject).to redirect_to household_path
         # Error case to
         patch :update, bad_params
         expect(subject).to render_template :edit
       end
     end
 
-    describe "PATCH 'upvote'" do
-      let(:params) do
-        {
-          album:{
-            name: "Something something something",
-            rank: 0
-          },
-          id: album.id
-        }
-      end
-
-      it "increments the rank of a album by 1" do
-        before_upvote = album.attributes
-        patch :upvote, params
-        album.reload
-        expect(album.attributes).to_not eq before_upvote
-      end
-    end
-
     describe "DELETE 'destroy'" do
       let(:params) do
         {
-          id: album.id
+          id: new_household.id
         }
       end
 
       it "deletes an album" do
-        expect(Album.all).to include(album)
+        expect(Household.all).to include(new_household)
         delete :destroy, params
-        expect(Album.all).to_not include(album)
+        expect(Household.all).to_not include(new_household)
       end
 
-      it "renders the all albums view" do
-        get :index
+      it "renders the all households view" do
+        delete :destroy, params
         expect(subject).to render_template :index
       end
     end
