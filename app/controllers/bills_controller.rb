@@ -12,24 +12,11 @@ class BillsController < ApplicationController
   end
 
   def create
-    @bill = Bill.create(name: bill_params[:bill][:name], total_amount: bill_params[:bill][:total_amount], paid: bill_params[:bill][:paid], household_id: params[:household_id])
+    @bill = Bill.create(bill_params)
     if @bill.save
-      redirect_to bills_path
+      redirect_to household_bills_path
     else
       render :new
-    end
-  end
-
-  def new_share
-    @bill = Bill.new
-  end
-
-  def create_share
-    @bill = Bill.create(bill_params[:bill])
-    if @bill.save
-      redirect_to bills_path
-    else
-      render :new_share
     end
   end
 
@@ -58,7 +45,7 @@ class BillsController < ApplicationController
 
 private
   def bill_params
-    params.require(:bill).permit(:name, :total_amount, :number_of_people_responsible, :names_of_people_responsible, :paid, :due_date, :parent_key, :household_id)
+    params.require(:bill).permit(:name, :total_amount, :paid, :due_date, :household_id)
   end
 
 end

@@ -1,7 +1,6 @@
 class HouseholdsController < ApplicationController
   def index
     @households = Household.all
-    @specific_bill = Household.find(params[:household_id])
   end
 
   def new

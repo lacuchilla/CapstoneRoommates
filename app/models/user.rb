@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :household
-  has_many :shares
+  has_many :shares, dependent: :destroy
 
   validates :uid, :username, :provider, presence: true
   validates :uid, :username, uniqueness: true

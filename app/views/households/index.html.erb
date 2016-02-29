@@ -1,3 +1,3 @@
-<% @bills.each do |bill| %>
-  <%= link_to "#{bill.name}", bill_path(bill.id) %>
+<% @households.each do |household| %>
+  <%= "#{household.name}" %><%= link_to "Show", "/households/#{household.id}" %>
 <% end %>

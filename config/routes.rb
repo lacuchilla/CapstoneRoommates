@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  get '/bills/new_share' => 'bills#new_share'
-  post '/bills/create_share' => 'bills#create_share'
-
-  resources :households
-  resources :users
-  resources :bills
-  resources :shares
-
-  resources :bills do
-    resources :shares
+  
+  resources :households do
+    resources :bills do
+      resources :shares
+    end
   end
+
+  resources :users
+
 
   root "users#index"
 
