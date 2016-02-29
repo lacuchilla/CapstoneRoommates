@@ -139,23 +139,17 @@ RSpec.describe BillsController, type: :controller do
   end
 
   describe "DELETE 'destroy'" do
-    let(:params) do
-      {
-        id: new_bill.id
-      }
-    end
-
     it "deletes a bill" do
       new_bill.save
       expect(Bill.all). to include(new_bill)
-      delete :destroy, params
+      delete :destroy, id: new_bill.id, household_id: this_household.id
       expect(Bill.all).to_not include(new_bill)
     end
 
     it "renders the all bills view" do
       new_bill.save
-      delete :destroy, params
-      expect(subject).to redirect_to bills_path
+      delete :destroy, id: new_bill.id, household_id: this_household.id
+      expect(subject).to redirect_to household_bills_path
     end
   end
 

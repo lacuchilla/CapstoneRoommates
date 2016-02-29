@@ -40,7 +40,7 @@ class BillsController < ApplicationController
 
   def destroy
     Bill.destroy(params[:id])
-    redirect_to bills_path
+    redirect_to household_bills_path
   end
 
 private
