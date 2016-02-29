@@ -8,8 +8,12 @@ class HouseholdsController < ApplicationController
   end
 
   def create
-    @household = Household.create( name: household_params[:household][:name], address: household_params[:household][:address], move_in_date: household_params[:household][:move_in_date])
-    redirect_to shares_path(params[:share_id])
+    @household = Household.create(household_params)
+    if @household.save
+      redirect_to households_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -36,7 +40,7 @@ class HouseholdsController < ApplicationController
   end
 
 private
-  def share_params
-    params.permit(person: [:bill_id, :due_date, :share_amount, :paid, :user_id])
+  def household_params
+    params.require(:household).permit(:name, :address, :move_in_date)
   end
 end
