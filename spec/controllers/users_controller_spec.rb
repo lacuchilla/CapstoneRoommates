@@ -34,37 +34,42 @@ RSpec.describe UsersController, type: :controller do
   describe "POST 'create'" do
     let(:params) do
       {
-        album:{
-          name: "Something something something"
+        user:{
+          uid: "Something something something",
+          username: "Yin-Yarn",
+          provider: "twitter"
         }
       }
     end
 
     let(:bad_params) do
       {
-        album:{
-          name: nil
+        user:{
+          username: nil
         }
       }
     end
 
-    it "creates an album" do
-      last_album = Album.last
+    it "creates a user" do
+      last_user = User.last
       post :create, params
-      expect(Album.last).to_not eq last_album
+      expect(User.last).to_not eq last_user
     end
 
-    it "does not create an album when bad params are used" do
-      last_album = Album.last
+    it "does not create a user when bad params are used" do
+      last_user = User.last
       post :create, bad_params
-      expect(Album.last).to eq last_album
+      expect(User.last).to eq last_user
     end
 
-    it "redirects to albums index page" do
+    it "redirects to users index page with good params" do
       post :create, params
       # Success case to index page
-      expect(subject).to redirect_to albums_path
+      expect(subject).to redirect_to users_path
       # Error case to
+    end
+
+    it "renders the new user template when bad params are used" do
       post :create, bad_params
       expect(subject).to render_template :new
     end
@@ -73,83 +78,69 @@ RSpec.describe UsersController, type: :controller do
   describe "PATCH 'update'" do
     let(:params) do
       {
-        album:{
-          name: "Something something something"
+        user:{
+          uid: "Something something something",
+          username: "Kirby",
+          provider: "twitter"
+
         },
-        id: album.id
+        id: new_user.id
       }
     end
 
     let(:bad_params) do
       {
-        album:{
-          name: nil
+        user:{
+          username: nil
         },
-        id: album.id
+        id: new_user.id
       }
     end
 
-    it "updates the album with good params" do
-      before_update = album.attributes
+    it "updates the user with good params" do
+      before_update = new_user.attributes
       patch :update, params
-      album.reload
-      expect(album.attributes).to_not eq before_update
+      new_user.reload
+      expect(new_user.attributes).to_not eq before_update
     end
 
     it "does not update the album with bad params" do
-      before_update = album.attributes
+      before_update = new_user.attributes
       patch :update, bad_params
-      album.reload
-      expect(album.attributes).to eq before_update
+      new_user.reload
+      expect(new_user.attributes).to eq before_update
     end
 
     it "redirects to the album's show page after a successful update" do
       patch :update, params
       # Success case to index page
-      expect(subject).to redirect_to album_path
+      expect(subject).to redirect_to user_path
+    end
+
+    it "renders the edit page when bad params are passed" do
       # Error case to
       patch :update, bad_params
       expect(subject).to render_template :edit
     end
   end
 
-  describe "PATCH 'upvote'" do
-    let(:params) do
-      {
-        album:{
-          name: "Something something something",
-          rank: 0
-        },
-        id: album.id
-      }
-    end
-
-    it "increments the rank of a album by 1" do
-      before_upvote = album.attributes
-      patch :upvote, params
-      album.reload
-      expect(album.attributes).to_not eq before_upvote
-    end
-  end
-
   describe "DELETE 'destroy'" do
     let(:params) do
       {
-        id: album.id
+        id: new_user.id
       }
     end
 
-    it "deletes an album" do
-      expect(Album.all).to include(album)
+    it "deletes a user" do
+      expect(User.all).to include(new_user)
       delete :destroy, params
-      expect(Album.all).to_not include(album)
+      expect(User.all).to_not include(new_user)
     end
 
-    it "renders the all albums view" do
-      get :index
-      expect(subject).to render_template :index
+    it "renders the all users view" do
+      delete :destroy, params
+      expect(subject).to redirect_to users_path
     end
   end
-
 
 end
