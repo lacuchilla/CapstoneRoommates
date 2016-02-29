@@ -125,11 +125,15 @@ RSpec.describe BillsController, type: :controller do
     end
 
     it "redirects to the bill's show page after a successful update" do
-      patch :update, bill_params
+      new_bill.save
+      patch :update, bill_params.merge(household_id: this_household.id, id: new_bill.id)
       # Success case to index page
       expect(subject).to redirect_to household_bills_path
-      # Error case to
-      patch :update, bad_bill_params
+    end
+
+    it "shows the edit bill page when attempting to update with bad params" do
+      new_bill.save
+      patch :update, bad_bill_params.merge(household_id: this_household.id, id: new_bill.id)
       expect(subject).to render_template :edit
     end
   end
