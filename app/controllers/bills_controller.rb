@@ -30,9 +30,9 @@ class BillsController < ApplicationController
   end
 
   def update
-    @bill = Bill.update(params[:id], bill_params[:bill])
+    @bill = Bill.update(params[:id], bill_params)
     if @bill.save
-      redirect_to bill_path(params[:id])
+      redirect_to household_bills_path(params[:id])
     else
       render :edit
     end

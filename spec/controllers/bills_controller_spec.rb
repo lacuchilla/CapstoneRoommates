@@ -87,28 +87,31 @@ RSpec.describe BillsController, type: :controller do
 
   describe "PATCH 'update'" do
     let(:bill_params) do
-    {
-      bill:{
-        name: "June Rent",
-        total_amount: 50000,
-        paid: false
+      {
+        bill: {
+          name: "June Rent",
+          total_amount: 50000,
+          paid: false
+        },
+        id: new_bill.id
       }
-    }
-  end
+    end
 
-  let(:bad_bill_params) do
-    {
-      bill:{
-        name: nil
+    let(:bad_bill_params) do
+      {
+        bill:{
+          name: nil,
+          total_amount: nil,
+          paid: nil
+        },
+        id: new_bill.id
       }
-    }
-  end
-
+    end
 
     it "updates the bill with good params" do
       new_bill.save
       before_update = new_bill.attributes
-      patch :update, bill_params.merge(id: new_bill.id)
+      patch :update, bill_params.merge(household_id: this_household.id, id: new_bill.id)
       new_bill.reload
       expect(new_bill.attributes).to_not eq before_update
     end
@@ -116,7 +119,7 @@ RSpec.describe BillsController, type: :controller do
     it "does not update the bill with bad params" do
       new_bill.save
       before_update = new_bill.attributes
-      patch :update, bad_bill_params
+      patch :update, bad_bill_params.merge(household_id: this_household.id, id: new_bill.id)
       new_bill.reload
       expect(new_bill.attributes).to eq before_update
     end
@@ -124,7 +127,7 @@ RSpec.describe BillsController, type: :controller do
     it "redirects to the bill's show page after a successful update" do
       patch :update, bill_params
       # Success case to index page
-      expect(subject).to redirect_to bill_path
+      expect(subject).to redirect_to household_bills_path
       # Error case to
       patch :update, bad_bill_params
       expect(subject).to render_template :edit
