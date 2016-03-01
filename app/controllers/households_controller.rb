@@ -5,14 +5,17 @@ class HouseholdsController < ApplicationController
 
   def new
     @household = Household.new
+    @url = "create"
   end
 
   def create
-    @household = Household.create(household_params[:household])
+    # @url = "create"
+    @household = Household.new(household_params[:household])
     if @household.save
       redirect_to households_path
-    else
-      render :new
+     else
+       render :new
+       @url = "create"
     end
   end
 
@@ -23,6 +26,7 @@ class HouseholdsController < ApplicationController
   def edit
     @household = Household.find(params[:id])
     @legend = "Edit Household"
+    @url = "update"
   end
 
   def update

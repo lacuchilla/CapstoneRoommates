@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root "households#index"
   resources :households do
     resources :bills do
       resources :shares
@@ -7,10 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :users
-
-
-  root "households#index"
-
 
   get '/login' => 'sessions#new', :as => :login
   get '/logout' => 'sessions#destroy'

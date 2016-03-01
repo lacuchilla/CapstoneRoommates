@@ -4,3 +4,4 @@
   <li><%= "#{household.name} " %><%= link_to "View Details", household_path(household.id), class: "btn btn-default" %>
 <% end %>
 </ul>
+<%= link_to "Create a New Household", new_household_path, class: "btn btn-default" %>
