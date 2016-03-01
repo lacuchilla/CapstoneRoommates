@@ -65,6 +65,11 @@ RSpec.describe BillsController, type: :controller do
       expect(Bill.last).to_not eq last_bill
     end
 
+    it "creates a valid bill" do
+
+
+    end
+
     it "does not create a bill when bad params are used" do
       new_bill.save
       last_bill = Bill.last

@@ -1,26 +1,32 @@
 class BillsController < ApplicationController
 
   def index
-    @bills = Bill.all
     @specific_household = Household.find(params[:household_id])
   # @company = Company.person.find(@company_id(params[:id]))
-    @household_bills = @specific_household.bills
+    @specific_household.bills
   end
 
   def new
+    @specific_household = Household.find(params[:household_id])
     @bill = Bill.new
+    @url = "create"
   end
 
   def create
-    @bill = Bill.create(bill_params)
+    @specific_household = Household.find(params[:household_id])
+    binding.pry
+    @bill = Bill.new(bill_params[:bill])
+    @bill.household = @specific_household
     if @bill.save
       redirect_to household_bills_path
     else
-      render :new
+     render :new
+     @url = "create"
     end
   end
 
   def show
+    @specific_household = Household.find(params[:household_id])
     @bill = Bill.find(params[:id])
     @date = @bill.due_date
   end
@@ -45,7 +51,7 @@ class BillsController < ApplicationController
 
 private
   def bill_params
-    params.require(:bill).permit(:name, :total_amount, :paid, :due_date, :household_id)
+    params.permit(:household_id, bill: [:name, :total_amount, :paid, :due_date])
   end
 
 end

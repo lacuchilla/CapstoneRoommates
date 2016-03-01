@@ -45,6 +45,6 @@ class HouseholdsController < ApplicationController
 
 private
   def household_params
-    params.permit(household: [:name, :address, :move_in_date])
+    params.permit(household: [:id, :name, :address, :move_in_date])
   end
 end

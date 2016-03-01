@@ -1,4 +1,4 @@
-<%= form_for @bill do |b| %>
+<%= form_for @bill, url: {action: "create"} do |b| %>
   <fieldset>
     <legend><%= @legend %></legend>
     <%= b.label :name %>
@@ -9,6 +9,6 @@
     <%= b.date_field :due_date %>
   </fieldset>
   <%= b.submit("Save") %>
-<% end%>
-<%= link_to "View All Bills", bills_path, class: "btn btn-default" %>
+<% end %>
+<%= link_to "View All Bills for this Household", household_bills_path(@specific_household.id), class: "btn btn-default" %>
 <%= link_to "Back to home page", root_path, class: "btn btn-default" %>

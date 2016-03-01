@@ -1,5 +1,7 @@
+<h3>Bills For <%= @specific_household.name %></h3>
 <ul>
-<% @bills.each do |bill| %>
-  <%= link_to "#{bill.name}", bill_path(bill.id) %>
+<% @specific_household.bills.each do |bill| %>
+  <li><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></li>
 <% end %>
 </ul>
+<%= link_to "Create a New Bill", new_household_bill_path(@specific_household.id), class: "btn btn-default" %>
