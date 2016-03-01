@@ -2,11 +2,10 @@
   <h1><a href="/auth/twitter">Log In With Twitter</a></h1>
 <% else %>
   <h6><%= link_to "Log Out", logout_path %></li>
-  <% @bills.each do |bill| %>
-    <h5>Current Bills</h5>
+  <% @households.each do |household| %>
+    <h5>Current Households</h5>
     <ul>
-      <li><%= bill.name %></li>
-      <li><%= bill.total_amount %></li>
+      <li><%= link_to "#{household.name}", household_path(household.id) %></li>
     </ul>
   <% end %>
 <% end %>

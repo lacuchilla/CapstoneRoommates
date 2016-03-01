@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :households do
     resources :bills do
       resources :shares
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users
 
 
-  root "users#index"
+  root "households#index"
 
 
   get '/login' => 'sessions#new', :as => :login

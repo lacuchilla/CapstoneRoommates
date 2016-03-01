@@ -1,3 +1,5 @@
+<ul>
 <% @bills.each do |bill| %>
   <%= link_to "#{bill.name}", bill_path(bill.id) %>
 <% end %>
+</ul>

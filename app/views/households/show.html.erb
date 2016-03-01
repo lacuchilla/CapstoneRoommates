@@ -1,7 +1,10 @@
 <div>
-  <%= @household.name %>
-  <%= @household.address %>
-  <%= @household.move_in_date%>
-  <%= link_to "View All Households", households_path, class: "btn btn-default" %>
-  <%= link_to "Return to Home Page", root_path, class: "btn btn-default"%>
+  <h4>Household Details</h4>
+  <ul>
+  <li>Name: <%= @household.name %></li>
+  <li>Address: <%= @household.address %></li>
+  <li>Move In Date: <%= @household.move_in_date.strftime("%m/%d/%Y")%></li>
+  <%= link_to "Back to Households Page", households_path, class: "btn btn-default" %>
+  <%= link_to "View Bills", household_bills_path(@household.id), class: "btn btn-default" %>
+  </ul>
 <div>
