@@ -1,4 +1,16 @@
-<%= @specific_bill.name %>
+<ul>
+<li>Name: <%= @specific_bill.name %></li>
+<li>Total Amount of Bill: <%= @specific_bill.total_amount %></li>
+<li>Bill Due Date: <%= @specific_bill.due_date.to_date %></li>
+<li>Paid? <%= @specific_bill.paid ? 'yes' : 'no' %></li>
+</ul>
+
+<ul>
+<% @specific_bill.shares.each do |share| %>
+
+  <li><%= link_to "#{share.share_amount}", household_bill_share_path(share.id, @specific_household.id, @specific_bill.id) %></li>
+<% end %>
+</ul>
 
 <%= form_for @share, url: {action: "create"} do |b| %>
   <fieldset>
