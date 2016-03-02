@@ -14,15 +14,14 @@ class BillsController < ApplicationController
 
   def create
     @specific_household = Household.find(params[:household_id])
-    binding.pry
     @bill = Bill.new(bill_params[:bill])
     @bill.household = @specific_household
     if @bill.save
       redirect_to household_bills_path
     else
      render :new
-     @url = "create"
     end
+    @url = "create"
   end
 
   def show
@@ -33,15 +32,19 @@ class BillsController < ApplicationController
 
   def edit
     @bill = Bill.find(params[:id])
+    # @specific_household = Household.find(params[:household_id])
+    @legend = "Edit Bill"
+    @url = "update"
   end
 
   def update
-    @bill = Bill.update(params[:id], bill_params)
+    @bill = Bill.update(params[:id], bill_params[:bill])
     if @bill.save
-      redirect_to household_bills_path(params[:id])
+      redirect_to household_bills_path(params[:household_id])
     else
       render :edit
     end
+    @url = "update"
   end
 
   def destroy

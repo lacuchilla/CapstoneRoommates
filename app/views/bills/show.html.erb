@@ -5,5 +5,6 @@
     <p>Payment Status of Bill: <%= @bill.paid %></p>
     <p>Bill Due Date: <%= @date.strftime("%m/%d/%Y") %></p>
   <%= link_to "View All Bills For This Household", household_bills_path(@specific_household.id), class: "btn btn-default" %>
+  <%= link_to "Edit This Bill", edit_household_bill_path(@specific_household.id, @bill.id), class: "btn btn-default" %>
   <%= link_to "Return to Home Page", root_path, class: "btn btn-default"%>
 <div>

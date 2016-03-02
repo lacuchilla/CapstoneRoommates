@@ -60,7 +60,7 @@ RSpec.describe BillsController, type: :controller do
     it "creates a bill" do
       new_bill.save
       last_bill = Bill.last
-      post :create, bill_params
+      post :create, bill_params.merge(household_id: this_household.id)
       new_bill.reload
       expect(Bill.last).to_not eq last_bill
     end
@@ -73,20 +73,22 @@ RSpec.describe BillsController, type: :controller do
     it "does not create a bill when bad params are used" do
       new_bill.save
       last_bill = Bill.last
-      post :create, bad_bill_params
+      post :create, bad_bill_params.merge(household_id: this_household.id)
       new_bill.reload
       expect(Bill.last).to eq last_bill
     end
 
     it "redirects to household bills page when good params are used" do
-      post :create, bill_params
+      new_bill.save
+      post :create, bill_params.merge(household_id: this_household.id)
       # Success case to index page
       expect(subject).to redirect_to household_bills_path
       # Error case to
     end
 
     it "displays the create new bill page when bad params are used" do
-      post :create, bad_bill_params
+      new_bill.save
+      post :create, bad_bill_params.merge(household_id: this_household.id)
       expect(subject).to render_template :new
     end
   end
@@ -99,7 +101,7 @@ RSpec.describe BillsController, type: :controller do
           total_amount: 50000,
           paid: false
         },
-        id: new_bill.id
+        household_id: 1
       }
     end
 
@@ -110,14 +112,14 @@ RSpec.describe BillsController, type: :controller do
           total_amount: nil,
           paid: nil
         },
-        id: new_bill.id
+        household_id: 1
       }
     end
 
     it "updates the bill with good params" do
       new_bill.save
       before_update = new_bill.attributes
-      patch :update, bill_params.merge(household_id: this_household.id, id: new_bill.id)
+      patch :update, bill_params.merge(household_id: this_household.id)
       new_bill.reload
       expect(new_bill.attributes).to_not eq before_update
     end
@@ -125,7 +127,7 @@ RSpec.describe BillsController, type: :controller do
     it "does not update the bill with bad params" do
       new_bill.save
       before_update = new_bill.attributes
-      patch :update, bad_bill_params.merge(household_id: this_household.id, id: new_bill.id)
+      patch :update, bad_bill_params.merge(household_id: this_household.id)
       new_bill.reload
       expect(new_bill.attributes).to eq before_update
     end

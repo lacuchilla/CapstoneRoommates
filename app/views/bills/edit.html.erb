@@ -1,16 +1,12 @@
 <div class="row">
   <div class="col-lg-12">
-    <%= form_for @bill do |b| %>
+    <%= form_for @bill, url: {action: "#{@url}"} do|b| %>
       <fieldset>
         <legend><%= @legend %></legend>
         <%= b.label :name %>
         <%= b.text_field :name %>
         <%= b.label :total_amount %>
         <%= b.text_field :total_amount %>
-        <%= b.label :number_of_people_responsible %>
-        <%= b.text_field :number_of_people_responsible %>
-        <%= b.label :names_of_people_responsible %>
-        <%= b.text_field :names_of_people_responsible %>
         <%= b.label :paid %>
         <%= b.text_field :paid %>
       </fieldset>
