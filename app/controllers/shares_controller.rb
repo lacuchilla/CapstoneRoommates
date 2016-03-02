@@ -1,6 +1,10 @@
 class SharesController < ApplicationController
   def index
-    @shares = Share.all
+    @specific_household = Household.find(params[:household_id])
+  # @company = Company.person.find(@company_id(params[:id]))
+    @household_bills = @specific_household.bills
+    @specific_bill = Bill.find(params[:bill_id])
+    # @specific_bill.shares
   end
 
   def new
