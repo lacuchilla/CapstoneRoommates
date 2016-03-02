@@ -8,7 +8,7 @@ class SharesController < ApplicationController
   end
 
   def new
-    @share = Share.new
+    @share = Share.new(share_params[:share])
     @specific_household = Household.find(params[:household_id])
   # @company = Company.person.find(@company_id(params[:id]))
     @household_bills = @specific_household.bills
@@ -16,7 +16,9 @@ class SharesController < ApplicationController
   end
 
   def create
-    @share = Share.create(share_params[:share])
+    @share = Share.new(share_params[:share])
+    @specific_bill = Bill.find(params[:bill_id])
+    @share.bill = @specific_bill
       if @share.save
         redirect_to household_bill_shares_path
       else
