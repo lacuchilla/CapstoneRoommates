@@ -52,6 +52,6 @@ class SharesController < ApplicationController
 
 private
   def share_params
-    params.permit(share: [:bill_id, :due_date, :share_amount, :paid, :household_id])
+    params.permit(share: [:bill_id, :due_date, :share_amount, :paid, :household_id, :user_id])
   end
 end
