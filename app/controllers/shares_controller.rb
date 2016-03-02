@@ -18,9 +18,10 @@ class SharesController < ApplicationController
   def create
     @share = Share.new(share_params[:share])
     @specific_bill = Bill.find(params[:bill_id])
+    @specific_household = Household.find(params[:household_id])
     @share.bill = @specific_bill
       if @share.save
-        redirect_to household_bill_shares_path
+        redirect_to new_household_bill_share_path
       else
         render :new
       end
