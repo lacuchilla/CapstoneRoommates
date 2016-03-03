@@ -1,8 +1,6 @@
-
-
+<h3>Shares for <%= @specific_bill.name %></h3>
 <ul>
 <% @specific_bill.shares.each do |share| %>
-
-  <li><%= link_to "#{share.share_amount}", household_bill_share_path(share.id, @specific_household.id, @specific_bill.id) %></li>
+  <li><%= share.user.username %>'s Amount: <%= link_to "#{share.share_amount}", household_bill_share_path(share.id, @specific_household.id, @specific_bill.id) %> Paid?:<%= share.paid ? 'yes' : 'no' %><%= link_to household_bill_share_path%></li>
 <% end %>
 </ul>

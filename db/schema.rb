@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226182231) do
+ActiveRecord::Schema.define(version: 20160302235105) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name"
     t.integer  "total_amount"
-    t.boolean  "paid"
+    t.string   "paid"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.datetime "due_date"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160226182231) do
     t.integer  "bill_id"
     t.datetime "due_date"
     t.integer  "share_amount"
-    t.boolean  "paid"
+    t.string   "paid"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"

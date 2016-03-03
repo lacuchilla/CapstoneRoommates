@@ -1,7 +1,19 @@
 <h3>Bills For <%= @specific_household.name %></h3>
+<h3>Outstanding Bills</h3>
 <ul>
 <% @specific_household.bills.each do |bill| %>
-  <li><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></li>
-<% end %>
+    <% if bill.paid == nil %>
+      <li><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></li>
+      <% end %>
+    <% end %>
 </ul>
+<h3>Paid Bills</h3>
+<ul>
+  <% @specific_household.bills.each do |bill| %>
+    <% if bill.paid != nil %>
+      <li><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
 <%= link_to "Create a New Bill", new_household_bill_path(@specific_household.id), class: "btn btn-default" %>

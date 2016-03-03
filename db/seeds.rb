@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 seed_bills = [
-  {name: "April Rent", total_amount: 50000, due_date: "2016-04-01 00:00:00", household_id: 1},
-  {name: "May Rent", total_amount: 50000, due_date: "2016-05-01 00:00:00", household_id: 1},
-  {name: "June Rent", total_amount: 50000, due_date: "2016-06-01 00:00:00", household_id: 1},
-  {name: "July Rent", total_amount: 50000, due_date: "2016-07-01 00:00:00", household_id: 1},
-  {name: "August Rent", total_amount: 50000, due_date: "2016-08-01 00:00:00", household_id: 1}
+  {name: "April Rent", total_amount: 50000, due_date: "2016-04-01 00:00:00", household_id: 1, paid: nil},
+  {name: "May Rent", total_amount: 50000, due_date: "2016-05-01 00:00:00", household_id: 1, paid: "yes"},
+  {name: "June Rent", total_amount: 50000, due_date: "2016-06-01 00:00:00", household_id: 1, paid: nil},
+  {name: "July Rent", total_amount: 50000, due_date: "2016-07-01 00:00:00", household_id: 1, paid: "yes"},
+  {name: "August Rent", total_amount: 50000, due_date: "2016-08-01 00:00:00", household_id: 1, paid: "yes"}
 ]
 
 seed_bills.each do |bill|
@@ -18,31 +18,31 @@ seed_bills.each do |bill|
 end
 
 seed_shares = [
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: false, user_id: 1},
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: false, user_id: 2},
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: false, user_id: 3},
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: false, user_id: 4},
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: false, user_id: 5},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: false, user_id: 1},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: false, user_id: 2},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: false, user_id: 3},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: false, user_id: 4},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: false, user_id: 5},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: false, user_id: 1},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: false, user_id: 2},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: false, user_id: 3},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: false, user_id: 4},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: false, user_id: 5},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: false, user_id: 1},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: false, user_id: 2},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: false, user_id: 3},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: false, user_id: 4},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: false, user_id: 5},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: false, user_id: 1},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: false, user_id: 2},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: false, user_id: 3},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: false, user_id: 4},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: false, user_id: 5}
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: nil, user_id: 1},
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 2},
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: nil, user_id: 3},
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 4},
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 10000, paid: nil, user_id: 5},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: nil, user_id: 1},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 2},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: nil, user_id: 3},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 4},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 10000, paid: nil, user_id: 5},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 1},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: nil, user_id: 2},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: nil, user_id: 3},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 4},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 10000, paid: nil, user_id: 5},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: nil, user_id: 1},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: nil, user_id: 2},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: nil, user_id: 3},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: nil, user_id: 4},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 10000, paid: nil, user_id: 5},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 1},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 2},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 3},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 4},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 10000, paid: "yes", user_id: 5}
 ]
 
 seed_shares.each do |share|
