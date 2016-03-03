@@ -1,6 +1,25 @@
-<h3>Shares for <%= @specific_bill.name %></h3>
-<ul>
-<% @specific_bill.shares.each do |share| %>
-  <li><%= share.user.username %>'s Amount: <%= link_to "#{share.share_amount}", household_bill_share_path(share.id, @specific_household.id, @specific_bill.id) %> Paid?:<%= share.paid ? 'yes' : 'no' %><%= link_to "Update Share", edit_household_bill_share_path(share.id, @specific_household.id, @specific_bill.id), class: "btn btn-default"%></li>
-<% end %>
-</ul>
+<div>
+  <h3>Shares for <%= @specific_bill.name %></h3>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>User</th>
+          <th>Share Amount</th>
+          <th>Paid?</th>
+          <th>Share Details</th>
+        </tr>
+        <tr>
+          <% @specific_bill.shares.each do |share| %>
+            <td><%= share.user.username %></td>
+            <td><%= share.share_amount %></td>
+            <td><%= share.paid ? 'yes' : 'no' %></td>
+            <td><%= link_to "Update Share", edit_household_bill_share_path(share.id, @specific_household.id, @specific_bill.id), class: "btn btn-default"%></td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
