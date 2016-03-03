@@ -1,12 +1,19 @@
+<h4>Add a New Bill</h4>
 <%= form_for @bill, url: {action: "create"} do |b| %>
   <fieldset>
     <legend><%= @legend %></legend>
-    <%= b.label :name %>
-    <%= b.text_field :name %>
-    <%= b.label :total_amount %>
-    <%= b.text_field :total_amount %>
-    <%= b.label :due_date %>
-    <%= b.date_field :due_date %>
+    <div class="form-group">
+      <%= b.label :name %>
+      <%= b.text_field :name %>
+    </div>
+    <div class="form-group">
+      <%= b.label :total_amount %>
+      <%= b.text_field :total_amount %>
+    </div>
+    <div class="form-group">
+      <%= b.label :due_date %>
+      <%= b.date_field :due_date %>
+    </div>
   </fieldset>
   <%= b.submit("Save") %>
 <% end %>

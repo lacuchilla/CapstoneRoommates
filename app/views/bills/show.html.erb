@@ -1,9 +1,27 @@
 <div>
   <h3>Bill Details</h3>
-    <p>Bill Name: <%= @bill.name %></p>
-    <p>Total Amount: <%= @bill.total_amount %>
-    <p>Payment Status of Bill: <%= @bill.paid %></p>
-    <p>Bill Due Date: <%= @date.strftime("%m/%d/%Y") %></p>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Paid?</th>
+          <th>Bill Due Date</th>
+        </tr>
+        <tr>
+          <td>Bill Name: <%= @bill.name %></td>
+          <td>Total Amount: <%= @bill.total_amount %></td>
+          <td>Payment Status of Bill: <%= @bill.paid %></td>
+          <td>Bill Due Date: <%= @date.strftime("%m/%d/%Y") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div>
   <%= link_to "View All Bills For This Household", household_bills_path(@specific_household.id), class: "btn btn-default" %>
   <%= link_to "Edit This Bill", edit_household_bill_path(@specific_household.id, @bill.id), class: "btn btn-default" %>
   <%= link_to "Return to Home Page", root_path, class: "btn btn-default"%>
