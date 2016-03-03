@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302235105) do
+ActiveRecord::Schema.define(version: 20160303222909) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160302235105) do
     t.datetime "updated_at",   null: false
     t.datetime "due_date"
     t.integer  "household_id"
+    t.string   "payment_type"
   end
 
   create_table "households", force: :cascade do |t|
@@ -35,10 +36,11 @@ ActiveRecord::Schema.define(version: 20160302235105) do
     t.integer  "bill_id"
     t.datetime "due_date"
     t.integer  "share_amount"
-    t.string   "paid"
+    t.boolean  "paid"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.string   "payment_type"
   end
 
   create_table "users", force: :cascade do |t|

@@ -12,7 +12,7 @@
         </tr>
         <tr>
         <% @specific_household.bills.each do |bill| %>
-          <% if bill.paid == nil %>
+          <% if bill.paid == nil && bill.shares == nil %>
             <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
             <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
         </tr>
