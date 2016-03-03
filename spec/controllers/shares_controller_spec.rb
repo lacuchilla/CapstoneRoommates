@@ -63,7 +63,7 @@ describe "POST 'create'" do
   it "creates a share" do
     new_share.save
     last_share = Share.last
-    post :create, share_params
+    post :create, share_params.merge(household_id: this_household.id, bill_id: this_bill.id)
     new_share.reload
     expect(Share.last).to_not eq last_share
   end
@@ -71,20 +71,22 @@ describe "POST 'create'" do
   it "does not create a share when bad params are used" do
     new_share.save
     last_share = Share.last
-    post :create, bad_share_params
+    post :create, bad_share_params.merge(household_id: this_household.id, bill_id: this_bill.id)
     new_share.reload
     expect(Share.last).to eq last_share
   end
 
   it "redirects to shares page for a bill when good params are used" do
-    post :create, share_params
+    new_share.save
+    post :create, share_params.merge(household_id: this_household.id, bill_id: this_bill.id)
     # Success case to index page
     expect(subject).to redirect_to household_bill_shares_path
     # Error case to
   end
 
   it "displays the create new bill page when bad params are used" do
-    post :create, bad_share_params
+    new_share.save
+    post :create, bad_share_params.merge(household_id: this_household.id, bill_id: this_bill.id)
     expect(subject).to render_template :new
   end
 end

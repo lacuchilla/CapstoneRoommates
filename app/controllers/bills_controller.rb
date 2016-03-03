@@ -17,7 +17,7 @@ class BillsController < ApplicationController
     @bill = Bill.new(bill_params[:bill])
     @bill.household = @specific_household
     if @bill.save
-      redirect_to household_bills_path(params[:household_id])
+      redirect_to new_household_bill_share_path(params[:household_id], @bill.id)
     else
      render :new
     end
