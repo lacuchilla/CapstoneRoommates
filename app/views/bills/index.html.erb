@@ -7,12 +7,33 @@
     <table class="table table-striped">
       <tbody>
         <tr>
-          <th>Outstanding Bills</th>
+          <th>Bills With Outstanding Shares</th>
           <th>Shares</th>
         </tr>
         <tr>
         <% @specific_household.bills.each do |bill| %>
-          <% if bill.paid == nil && bill.shares == nil %>
+          <% if bill.paid == "no" %>
+            <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
+            <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
+        </tr>
+          <% end %>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>All Shares Received</th>
+          <th>Shares</th>
+        </tr>
+        <tr>
+        <% @specific_household.bills.each do |bill| %>
+          <% if bill.paid == "all shares received" %>
             <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
             <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
         </tr>
@@ -33,7 +54,7 @@
         </tr>
         <tr>
         <% @specific_household.bills.each do |bill| %>
-          <% if bill.paid != nil %>
+          <% if bill.paid == "yes" %>
             <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
             <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
         </tr>
