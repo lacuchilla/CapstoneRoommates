@@ -1,7 +1,22 @@
 <h4>All Households</h4>
-<ul>
-<% @households.each do |household| %>
-  <li><%= "#{household.name} " %><%= link_to "View Details", household_path(household.id), class: "btn btn-default" %><%= link_to "View Bills", household_bills_path(household.id), class: "btn btn-default" %>
-<% end %>
-</ul>
-<%= link_to "Create a New Household", new_household_path, class: "btn btn-default" %>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Household</th>
+          <th>Bills</th>
+        </tr>
+        <% @households.each do |household| %>
+          <tr>
+            <td><%= link_to "#{household.name}", household_path(household.id) %></td>
+            <td><%= link_to "View Bills", household_bills_path(household.id), class: "btn btn-default" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div>
+  <%= link_to "Create a New Household", new_household_path, class: "btn btn-default" %>
+</div>

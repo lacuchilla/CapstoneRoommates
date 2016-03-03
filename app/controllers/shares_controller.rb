@@ -38,6 +38,7 @@ class SharesController < ApplicationController
   def edit
     @share = Share.find(params[:id])
     @legend = "Edit Share"
+    @url = "update"
   end
 
   def update
@@ -47,6 +48,7 @@ class SharesController < ApplicationController
       else
         render :edit
       end
+    @url = "update"
   end
 
   def destroy
