@@ -1,7 +1,11 @@
+<h3><%= @share.username %><%= @specific_bill.name%></h3>
+
 <div>
-  <%= @share.due_date %>
-  <%= @share.share_amount %>
-  <%= @share.paid%>
-  <%= link_to "View All Shares", shares_path, class: "btn btn-default" %>
+  <ul>
+    <li>Share Due Date:<%= @share.due_date.strftime("%m/%d/%Y") %></li>
+    <li><%= @share.share_amount %></li>
+    <li><%= @share.paid ? 'yes' : 'no'%></li>
+  </ul>
+  <%= link_to "View All Shares", household_bill_shares_path, class: "btn btn-default" %>
   <%= link_to "Return to Home Page", root_path, class: "btn btn-default"%>
 <div>

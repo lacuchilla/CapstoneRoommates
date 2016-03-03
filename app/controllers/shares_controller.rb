@@ -3,9 +3,8 @@ class SharesController < ApplicationController
     @specific_household = Household.find(params[:household_id])
     @household_bills = @specific_household.bills
     @specific_bill = Bill.find(params[:bill_id])
-    @specific_bill.shares
+    @bill_shares = @specific_bill.shares
     @shares = Share.all
-
 
 
   end
@@ -32,6 +31,8 @@ class SharesController < ApplicationController
 
   def show
     @share = Share.find(params[:id])
+    @specific_bill = Bill.find(params[:bill_id])
+    @share.bill = @specific_bill
   end
 
   def edit
