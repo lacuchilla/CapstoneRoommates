@@ -3,7 +3,7 @@ class Bill < ActiveRecord::Base
   belongs_to :household
 
   validates :name, presence: true
-  # :total_amount, :due_date,
+  monetize :total_amount_cents
 
 
 end
