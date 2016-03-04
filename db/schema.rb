@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303222909) do
+ActiveRecord::Schema.define(version: 20160304214728) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name"
@@ -37,10 +37,11 @@ ActiveRecord::Schema.define(version: 20160303222909) do
     t.datetime "due_date"
     t.integer  "share_amount"
     t.boolean  "paid"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "payment_type"
+    t.datetime "date_received"
   end
 
   create_table "users", force: :cascade do |t|

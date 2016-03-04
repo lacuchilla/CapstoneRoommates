@@ -58,6 +58,8 @@ class SharesController < ApplicationController
     redirect_to household_bill_shares_path
   end
 
+  
+
 private
   def share_params
     params.permit(share: [:bill_id, :due_date, :share_amount, :paid, :household_id, :user_id])

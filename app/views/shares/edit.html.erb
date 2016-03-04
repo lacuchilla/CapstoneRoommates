@@ -12,8 +12,19 @@
       </div>
       <div class="form-group">
         <%= b.label :paid %>
-        <%= b.text_field :paid %>
+        <%= b.check_box :paid %>
       </div>
+      <% if @share.paid == nil %>
+        <div class="form-group">
+          <%= b.label :payment_type %>
+          <%= b. text_field :payment_type %>
+        </div>
+        <div class="form-group">
+          <%= b.label :date_received %>
+          <%= b.date_field :date_received %>
+        </div>
+      <% end %>
+
     </fieldset>
   <%= b.submit("Save") %>
 <% end%>
