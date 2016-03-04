@@ -1,9 +1,32 @@
+
+<h4><li>Name: <%= @specific_bill.name %></li></h4>
 <ul>
 <li>Name: <%= @specific_bill.name %></li>
 <li>Total Amount of Bill: <%= @specific_bill.total_amount %></li>
 <li>Bill Due Date: <%= @specific_bill.due_date.to_date %></li>
 <li>Paid? <%= @specific_bill.paid ? 'yes' : 'no' %></li>
 </ul>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Paid?</th>
+          <th>Bill Due Date</th>
+        </tr>
+        <tr>
+          <td>Bill Name: <%= @bill.name %></td>
+          <td>Total Amount: <%= @bill.total_amount %></td>
+          <td>Payment Status of Bill: <%= @bill.paid %></td>
+          <td>Bill Due Date: <%= @date.strftime("%m/%d/%Y") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <ul>
 <% @specific_bill.shares.each do |share| %>

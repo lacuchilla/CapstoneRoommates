@@ -80,7 +80,7 @@ describe "POST 'create'" do
     new_share.save
     post :create, share_params.merge(household_id: this_household.id, bill_id: this_bill.id)
     # Success case to index page
-    expect(subject).to redirect_to household_bill_shares_path
+    expect(subject).to redirect_to new_household_bill_share_path
     # Error case to
   end
 

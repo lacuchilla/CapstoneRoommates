@@ -12,9 +12,9 @@
           <th>Bill Due Date</th>
         </tr>
         <tr>
-          <td>Bill Name: <%= @bill.name %></td>
-          <td>Total Amount: <%= @bill.total_amount %></td>
-          <td>Payment Status of Bill: <%= @bill.paid %></td>
+          <td>Bill Name: <%= @specific_bill.name %></td>
+          <td>Total Amount: <%= @specific_bill.total_amount %></td>
+          <td>Payment Status of Bill: <%= @specific_bill.paid %></td>
           <td>Bill Due Date: <%= @date.strftime("%m/%d/%Y") %></td>
         </tr>
       </tbody>
