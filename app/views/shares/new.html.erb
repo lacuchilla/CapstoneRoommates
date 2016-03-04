@@ -1,12 +1,5 @@
 
-<h4><li>Name: <%= @specific_bill.name %></li></h4>
-<ul>
-<li>Name: <%= @specific_bill.name %></li>
-<li>Total Amount of Bill: <%= @specific_bill.total_amount %></li>
-<li>Bill Due Date: <%= @specific_bill.due_date.to_date %></li>
-<li>Paid? <%= @specific_bill.paid ? 'yes' : 'no' %></li>
-</ul>
-
+<h4>Bill Information</h4>
 <div class="row">
   <div class="col-md-6">
     <table class="table table-striped">
@@ -14,26 +7,45 @@
         <tr>
           <th>Name</th>
           <th>Amount</th>
-          <th>Paid?</th>
           <th>Bill Due Date</th>
+          <th>Paid?</th>
         </tr>
         <tr>
-          <td>Bill Name: <%= @bill.name %></td>
-          <td>Total Amount: <%= @bill.total_amount %></td>
-          <td>Payment Status of Bill: <%= @bill.paid %></td>
-          <td>Bill Due Date: <%= @date.strftime("%m/%d/%Y") %></td>
+          <td><%= @specific_bill.name %></td>
+          <td><%= @specific_bill.total_amount %></td>
+          <td><%= @date.strftime("%m/%d/%Y") %></td>
+          <td><%= @specific_bill.paid %></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+<h4>Created Shares</h4>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Person Responsible</th>
+          <th>Amount</th>
+          <th>Share Due Date</th>
+          <th>Paid?</th>
+        </tr>
+        <tr>
+          <% @specific_bill.shares.each do |share| %>
+          <td><%= @specific_bill.name %></td>
+          <td><%= @specific_bill.total_amount %></td>
+          <td><%= @date.strftime("%m/%d/%Y") %></td>
+          <td><%= @specific_bill.paid %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<ul>
-<% @specific_bill.shares.each do |share| %>
 
-  <li><%= link_to "#{share.share_amount}", household_bill_share_path(share.id, @specific_household.id, @specific_bill.id) %></li>
-<% end %>
-</ul>
+
 
 <%= form_for @share, url: {action: "create"} do |b| %>
   <fieldset>
