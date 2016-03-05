@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305002718) do
+ActiveRecord::Schema.define(version: 20160305042031) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160305002718) do
     t.datetime "due_date"
     t.integer  "household_id"
     t.string   "payment_type"
+    t.integer  "bill_status"
   end
 
   create_table "households", force: :cascade do |t|

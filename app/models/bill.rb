@@ -5,7 +5,7 @@ class Bill < ActiveRecord::Base
   validates :name, presence: true
   monetize :total_amount_cents
 
-  enum bill_status: [:created_no_shares, :created_unpaid_shares, :created_all_shares_paid, :bill_paid]
+  enum bill_status: [:created, :created_unpaid_shares, :created_all_shares_paid, :bill_paid]
 
 
 end
