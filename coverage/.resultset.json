@@ -199,9 +199,9 @@
         4,
         4,
         4,
-        2,
+        4,
         null,
-        2,
+        0,
         null,
         null,
         null,
@@ -220,9 +220,9 @@
         1,
         4,
         4,
-        2,
+        4,
         null,
-        2,
+        0,
         null,
         4,
         null,
@@ -230,6 +230,13 @@
         1,
         2,
         2,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
         null,
         null,
         1,
@@ -294,7 +301,9 @@
         1,
         null,
         1,
+        1,
         null,
+        1,
         null,
         null,
         null
@@ -310,6 +319,8 @@
       "/Users/amyhunter/Desktop/capstone/roommates/app/models/share.rb": [
         1,
         1,
+        1,
+        null,
         1,
         null,
         1,
@@ -351,6 +362,6 @@
         null
       ]
     },
-    "timestamp": 1457118724
+    "timestamp": 1457200903
   }
 }

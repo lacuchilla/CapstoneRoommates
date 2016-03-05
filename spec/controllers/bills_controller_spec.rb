@@ -40,7 +40,7 @@ RSpec.describe BillsController, type: :controller do
       {
         bill:{
           name: "May Rent",
-          total_amount: 50000,
+          total_amount_cents: 50000,
           paid: false,
           due_date: "2016-02-29 19:41:22"
         },
@@ -97,7 +97,7 @@ RSpec.describe BillsController, type: :controller do
       {
         bill: {
           name: "June Rent",
-          total_amount: 50000,
+          total_amount_cents: 50000,
           paid: false
         },
         household_id: 1
@@ -108,7 +108,7 @@ RSpec.describe BillsController, type: :controller do
       {
         bill:{
           name: nil,
-          total_amount: nil,
+          total_amount_cents: nil,
           paid: nil
         },
         household_id: 1
