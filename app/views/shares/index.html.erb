@@ -14,9 +14,9 @@
         <tr>
           <% @specific_bill.shares.each do |share| %>
             <td><%= share.user.username %></td>
-            <td><%= share.share_amount %></td>
+            <td><%= humanized_money_with_symbol(share.share_amount) %></td>
             <td><%= share.paid ? 'yes' : 'no' %></td>
-            <td><%= link_to "Update Share", edit_household_bill_share_path(share.id, @specific_household.id, @specific_bill.id), class: "btn btn-default"%></td>
+            <td><%= link_to "Update Share", household_bill_share_share_status_path(share.id, @specific_household.id, @specific_bill.id), class: "btn btn-default"%></td>
           </tr>
           <% end %>
       </tbody>

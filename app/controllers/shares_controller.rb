@@ -58,7 +58,12 @@ class SharesController < ApplicationController
     redirect_to household_bill_shares_path
   end
 
-  
+  def share_status
+    @share = Share.find(params[:id])
+    @legend = "Edit Share"
+    @url = "update"
+  end
+
 
 private
   def share_params

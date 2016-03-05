@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root "households#index"
   resources :households do
     resources :bills do
-      resources :shares
+      resources :shares do
+        get '/share_status' => 'shares#share_status'
+        post '/share_status', to: 'shares#share_status' 
+      end
     end
   end
 
