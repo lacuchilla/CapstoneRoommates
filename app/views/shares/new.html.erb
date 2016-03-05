@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td><%= @specific_bill.name %></td>
-          <td><%= @specific_bill.total_amount %></td>
+          <td><%= humanized_money_with_symbol(@specific_bill.total_amount) %></td>
           <td><%= @date.strftime("%m/%d/%Y") %></td>
           <td><%= @specific_bill.paid %></td>
         </tr>
@@ -36,7 +36,7 @@
         <tr>
           <% @shares.each do |share| %>
           <td><%= User.find(share.user_id).username %></td>
-          <td><%= share.share_amount %></td>
+          <td><%= humanized_money_with_symbol(share.share_amount) %></td>
           <td><%= share.due_date.strftime("%m/%d/%Y") %></td>
           <td><%= share.paid %></td>
           <% if share.paid %>
@@ -60,7 +60,7 @@
     </div>
     <div class="form-group">
       <%= b.label :share_amount %>
-      <%= b.text_field :share_amount %>
+      <%= b.text_field :share_amount, data: { role: 'money', a_sep: '.', a_dec: ',' }%>
     </div>
     <div class="form-group">
       <%= b.label :person_responsible %>

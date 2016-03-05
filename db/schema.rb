@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304214728) do
+ActiveRecord::Schema.define(version: 20160305002718) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name"
-    t.integer  "total_amount"
+    t.integer  "total_amount_cents"
     t.string   "paid"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.datetime "due_date"
     t.integer  "household_id"
     t.string   "payment_type"
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20160304214728) do
   create_table "shares", force: :cascade do |t|
     t.integer  "bill_id"
     t.datetime "due_date"
-    t.integer  "share_amount"
+    t.integer  "share_amount_cents"
     t.boolean  "paid"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "user_id"
     t.string   "payment_type"
     t.datetime "date_received"
