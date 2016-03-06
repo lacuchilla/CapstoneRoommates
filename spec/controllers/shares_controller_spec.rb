@@ -42,7 +42,7 @@ describe "POST 'create'" do
       share:{
         bill_id: 1,
         due_date: "2016-02-29 19:41:22",
-        share_amount: 50000,
+        share_amount_cents: 50000,
         paid: false,
       },
       household_id: 1,
@@ -53,7 +53,7 @@ describe "POST 'create'" do
   let(:bad_share_params) do
     {
       share:{
-        share_amount: nil
+        share_amount_cents: nil
       },
       household_id: 1,
       bill_id: 2
@@ -97,7 +97,7 @@ describe "PATCH 'update'" do
       share:{
         bill_id: 1,
         due_date: "2016-02-29 19:41:22",
-        share_amount: 50000,
+        share_amount_cents: 50000,
         paid: false,
       },
       household_id: 1,
@@ -109,7 +109,7 @@ describe "PATCH 'update'" do
   let(:bad_share_params) do
     {
       share:{
-        share_amount: nil
+        share_amount_cents: nil
       },
       household_id: 1,
       bill_id: 2

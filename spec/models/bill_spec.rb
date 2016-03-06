@@ -15,7 +15,7 @@ RSpec.describe Bill, type: :model do
     end
 
     it "requires a total amount" do
-      new_bill.total_amount = nil
+      new_bill.total_amount_cents = nil
       expect(new_bill).to be_invalid
     end
 
