@@ -105,10 +105,9 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it "does not update the album with bad params" do
-      before_update = new_user.attributes
       patch :update, bad_params
       new_user.reload
-      expect(new_user.attributes).to eq before_update
+      expect(new_user.username).to eq "MyString"
     end
 
     it "redirects to the album's show page after a successful update" do

@@ -103,10 +103,9 @@ RSpec.describe HouseholdsController, type: :controller do
 
       it "does not update the household with bad params" do
         new_household.save
-        before_update = new_household.attributes
         patch :update, bad_params
         new_household.reload
-        expect(new_household.attributes).to eq before_update
+        expect(new_household.name).to eq "MyString"
       end
 
       it "redirects to the household's show page after a successful update" do

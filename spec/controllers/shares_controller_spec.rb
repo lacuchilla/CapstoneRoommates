@@ -126,10 +126,9 @@ describe "PATCH 'update'" do
 
   it "does not update the share with bad params" do
     new_share.save
-    before_update = new_share.attributes
     patch :update, bad_share_params.merge(household_id: this_household.id, bill_id: this_bill.id, id: new_share.id)
     new_share.reload
-    expect(new_share.attributes).to eq before_update
+    expect(new_share.share_amount_cents).to eq 1
   end
 
   it "redirects to the share's show page after a successful update" do
