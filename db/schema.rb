@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305042031) do
+ActiveRecord::Schema.define(version: 20160307222205) do
 
   create_table "bills", force: :cascade do |t|
     t.string   "name"
     t.integer  "total_amount_cents"
     t.string   "paid"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.datetime "due_date"
     t.integer  "household_id"
     t.string   "payment_type"
-    t.integer  "bill_status"
+    t.integer  "bill_status",        default: 0
   end
 
   create_table "households", force: :cascade do |t|
