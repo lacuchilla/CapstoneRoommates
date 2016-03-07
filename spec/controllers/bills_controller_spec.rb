@@ -78,11 +78,11 @@ RSpec.describe BillsController, type: :controller do
       expect(Bill.last).to eq last_bill
     end
 
-    # it "redirects to new household bill shares page when good params are used" do
-    #   new_bill.save
-    #   post :create, bill_params.merge(household_id: this_household.id, bill_id: new_bill.id, id: new_bill.id )
-    #   expect(subject).to redirect_to new_household_bill_share_path
-    # end
+    it "redirects to new household bill shares page when good params are used" do
+      new_bill.save
+      post :create, bill_params.merge(household_id: this_household.id, bill_id: new_bill.id, id: new_bill.id )
+      expect(subject).to redirect_to new_household_bill_share_path
+    end
 
     it "displays the create new bill page when bad params are used" do
       new_bill.save
@@ -116,18 +116,16 @@ RSpec.describe BillsController, type: :controller do
 
     it "updates the bill with good params" do
       new_bill.save
-      before_update = new_bill.attributes
       patch :update, bill_params.merge(household_id: this_household.id, id: new_bill.id)
       new_bill.reload
-      expect(new_bill.attributes).to_not eq before_update
+      expect(new_bill.name).to eq "June Rent"
     end
 
     it "does not update the bill with bad params" do
       new_bill.save
-      before_update = new_bill.attributes
       patch :update, bad_bill_params.merge(household_id: this_household.id, id: new_bill.id)
       new_bill.reload
-      expect(new_bill.attributes).to eq before_update
+      expect(new_bill.name).to eq "MyString"
     end
 
     it "redirects to the bill's show page after a successful update" do
