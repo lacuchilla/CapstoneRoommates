@@ -1,6 +1,9 @@
 <div>
   <h4>Bills For <%= @specific_household.name %></h4>
 </div>
+<div>
+  <%= link_to "Create a New Bill", new_household_bill_path(@specific_household.id), class: "btn btn-default" %>
+</div>
 
 <div class="row">
   <div class="col-md-6">
@@ -64,7 +67,3 @@
     </table>
   </div>
 </div>
-
-
-
-<%= link_to "Create a New Bill", new_household_bill_path(@specific_household.id), class: "btn btn-default" %>
