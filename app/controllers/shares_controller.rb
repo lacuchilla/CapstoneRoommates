@@ -23,6 +23,8 @@ class SharesController < ApplicationController
     @share = Share.new(share_params[:share])
     @specific_bill = Bill.find(params[:bill_id])
     @specific_household = Household.find(params[:household_id])
+    @date = @specific_bill.due_date
+    @shares = @specific_bill.shares
     @share.bill = @specific_bill
       if @share.save
         redirect_to new_household_bill_share_path
@@ -58,11 +60,11 @@ class SharesController < ApplicationController
     redirect_to household_bill_shares_path
   end
 
-  # def share_status
-  #   @share = Share.find(params[:id])
-  #   @legend = "Edit Share"
-  #   @url = "update"
-  # end
+  def share_status
+    @share = Share.find(params[:share_id])
+    @legend = "Edit Share"
+    @url = "update"
+  end
 
 
 private

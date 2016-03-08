@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 seed_bills = [
-  {name: "April Rent", total_amount: 300000, due_date: "2016-04-01 00:00:00", household_id: 1, paid: false},
-  {name: "May Rent", total_amount: 300000, due_date: "2016-05-01 00:00:00", household_id: 1, paid: false},
-  {name: "June Rent", total_amount: 300000, due_date: "2016-06-01 00:00:00", household_id: 1, paid: false},
-  {name: "July Rent", total_amount: 300000, due_date: "2016-07-01 00:00:00", household_id: 1, paid: false},
-  {name: "August Rent", total_amount: 300000, due_date: "2016-08-01 00:00:00", household_id: 1, paid: false},
-  {name: "Febtober Rent", total_amount: 300000, due_date: "2016-08-01 00:00:00", household_id: 1, paid: true},
-  {name: "Januly Rent", total_amount: 300000, due_date: "2016-08-01 00:00:00", household_id: 1, paid: true}
+  {name: "April Rent", total_amount: 3000.99, due_date: "2016-04-01 00:00:00", household_id: 1, paid: false, bill_status: 1},
+  {name: "May Rent", total_amount: 3000, due_date: "2016-05-01 00:00:00", household_id: 1, paid: false, bill_status: 1},
+  {name: "June Rent", total_amount: 3000, due_date: "2016-06-01 00:00:00", household_id: 1, paid: false, bill_status: 1},
+  {name: "July Rent", total_amount: 3000, due_date: "2016-07-01 00:00:00", household_id: 1, paid: false, bill_status: 1},
+  {name: "August Rent", total_amount: 3000, due_date: "2016-08-01 00:00:00", household_id: 1, paid: false, bill_status: 1},
+  {name: "Febtober Rent", total_amount: 3000, due_date: "2016-08-01 00:00:00", household_id: 1, paid: false, bill_status: 1},
+  {name: "Januly Rent", total_amount: 3000, due_date: "2016-08-01 00:00:00", household_id: 1, paid: false, bill_status: 2}
 ]
 
 seed_bills.each do |bill|
@@ -20,31 +20,31 @@ seed_bills.each do |bill|
 end
 
 seed_shares = [
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 1},
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-03-24 00:00:00", user_id: 2},
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 3},
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 60000, paid: true, payment_type: "cash", date_received: "2016-03-20 00:00:00", user_id: 4},
-  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 5},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 1},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-04-24 00:00:00", user_id: 2},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 60000, paid: false, payment_type:  nil, date_received: nil, user_id: 3},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-04-23 00:00:00", user_id: 4},
-  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 5},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-05-22 00:00:00", user_id: 1},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 2},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 3},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 60000, paid: true, payment_type: "cash", date_received: "2016-05-24 00:00:00", user_id: 4},
-  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 5},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 1},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 2},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 3},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 4},
-  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 60000, paid: false, payment_type: nil, date_received: nil, user_id: 5},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-07-24 00:00:00", user_id: 1},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-07-22 00:00:00", user_id: 2},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-07-24 00:00:00", user_id: 3},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-07-23 00:00:00", user_id: 4},
-  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 60000, paid: true, payment_type: "check", date_received: "2016-07-24 00:00:00", user_id: 5}
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 1},
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-03-24 00:00:00", user_id: 2},
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 3},
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 600, paid: true, payment_type: "cash", date_received: "2016-03-20 00:00:00", user_id: 4},
+  {bill_id: 1, due_date: "2016-03-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 5},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 1},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-04-24 00:00:00", user_id: 2},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 600, paid: false, payment_type:  nil, date_received: nil, user_id: 3},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-04-23 00:00:00", user_id: 4},
+  {bill_id: 2, due_date: "2016-04-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 5},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-05-22 00:00:00", user_id: 1},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 2},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 3},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 600, paid: true, payment_type: "cash", date_received: "2016-05-24 00:00:00", user_id: 4},
+  {bill_id: 3, due_date: "2016-05-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 5},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 1},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 2},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 3},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 4},
+  {bill_id: 4, due_date: "2016-06-25 00:00:00", share_amount: 600, paid: false, payment_type: nil, date_received: nil, user_id: 5},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-07-24 00:00:00", user_id: 1},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-07-22 00:00:00", user_id: 2},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-07-24 00:00:00", user_id: 3},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-07-23 00:00:00", user_id: 4},
+  {bill_id: 5, due_date: "2016-07-25 00:00:00", share_amount: 600, paid: true, payment_type: "check", date_received: "2016-07-24 00:00:00", user_id: 5}
 ]
 
 seed_shares.each do |share|

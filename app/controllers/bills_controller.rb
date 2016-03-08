@@ -28,6 +28,7 @@ class BillsController < ApplicationController
     @specific_household = Household.find(params[:household_id])
     @bill = Bill.find(params[:id])
     @date = @bill.due_date
+
   end
 
   def edit
@@ -54,7 +55,7 @@ class BillsController < ApplicationController
 
 private
   def bill_params
-    params.permit(:household_id, bill: [:name, :total_amount_cents, :paid, :due_date, :payment_type, :bill_status])
+    params.permit(:household_id, bill: [:name, :total_amount, :paid, :due_date, :payment_type, :bill_status])
   end
 
 end
