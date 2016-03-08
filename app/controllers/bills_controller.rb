@@ -35,11 +35,13 @@ class BillsController < ApplicationController
     @bill = Bill.find(params[:id])
     # @specific_household = Household.find(params[:household_id])
     @legend = "Edit Bill"
+    @statuses = Bill.bill_statuses
     @url = "update"
   end
 
   def update
     @bill = Bill.update(params[:id], bill_params[:bill])
+    @statuses = Bill.bill_statuses
     if @bill.save
       redirect_to household_bills_path(params[:household_id])
     else

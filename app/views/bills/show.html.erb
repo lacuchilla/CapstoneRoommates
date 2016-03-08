@@ -14,7 +14,12 @@
         <tr>
           <td><%= @bill.name %></td>
           <td><%= humanized_money_with_symbol(@bill.total_amount) %></td>
-          <td><%= @bill.paid %></td>
+          <td><% if @bill.paid == "f" %>
+                <%= "no" %>
+              <% elsif @bill.paid == "t" %>
+                <%= "yes" %>
+              <% end %>
+          </td>
           <td><%= @date.strftime("%m/%d/%Y") %></td>
         </tr>
       </tbody>

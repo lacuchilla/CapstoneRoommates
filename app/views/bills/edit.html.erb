@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
           <%= b.label :bill_status %>
-          <%= b.collection_select(:enum)%>
+          <%= b.select :bill_status, options_for_select(@statuses.collect { |s| [s[0].humanize, s[0]] }, selected: @bill.bill_status), {} %>
         </div>
       </fieldset>
       <%= b.submit("Save") %>
