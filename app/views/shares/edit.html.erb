@@ -23,6 +23,18 @@
           <%= b.label :date_received %>
           <%= b.date_field :date_received %>
         </div>
+        <div class="form-group">
+          <%= b.label :paid %>
+          <%= b. check_box :paid %>
+        </div>
+        <div class="form-group">
+          <%= b.label :payment_type %>
+          <%= b. collection_select(:share, Share.all, :id, :payment_type) %>
+        </div>
+        <div class="form-group">
+          <%= b.label :date_received %>
+          <%= b.date_field :date_received %>
+        </div>
       <% end %>
 
     </fieldset>

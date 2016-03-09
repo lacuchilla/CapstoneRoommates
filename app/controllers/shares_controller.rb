@@ -37,6 +37,7 @@ class SharesController < ApplicationController
     @share = Share.find(params[:id])
     @specific_bill = Bill.find(params[:bill_id])
     @share.bill = @specific_bill
+    @user = User.find(@share.id)
   end
 
   def edit
@@ -63,6 +64,17 @@ class SharesController < ApplicationController
   def share_status
     @share = Share.find(params[:share_id])
     @legend = "Edit Share"
+    @url = "update"
+    @date = @share.due_date
+  end
+
+  def update_share_status
+    @share = Share.update(params[:share_id], share_params[:share])
+      if @share.save
+        redirect_to household_bill_shares_path
+      else
+        render :edit
+      end
     @url = "update"
   end
 

@@ -1,17 +1,23 @@
 <div>
   <h4>Update Share Status</h4>
+
 </div>
 <div>
-  <%= form_for @share, url: {action: "#{@url}"} do |b| %>
+  <%= form_for @share, url: household_bill_share_share_status_path do |b| %>
     <fieldset>
       <legend><%= @legend %></legend>
       <div class="form-group">
+        <p>Am I here?</p>
         <%= b.label :paid %>
         <%= b. check_box :paid %>
       </div>
       <div class="form-group">
         <%= b.label :payment_type %>
-        <%= b. text_field :payment_type %>
+        <select name="share[id]" id="share_id">
+          <option selected="selected" value="cash"></option>
+          <option value="1">cash</option>
+          <option value="2">check</option>
+        </select>
       </div>
       <div class="form-group">
         <%= b.label :date_received %>

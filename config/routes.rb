@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :households do
     resources :bills do
       resources :shares do
-        get '/share_status' => 'shares#share_status'
-        post '/share_status', to: 'shares#share_status' 
+        get :share_status 
+        # patch '/share_status', to: 'shares#share_status'
       end
     end
   end
