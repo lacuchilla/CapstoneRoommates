@@ -1,11 +1,26 @@
-== README
+== RoomiePayUp
 
-This README would normally document whatever steps are necessary to get the
+Have you ever had a living situation where there was not a consistent way to keep track of payment of house expenses like rent, electricity, internet, etc.? Have you been looking for a way to split a bill into shares among housemates, and be able to notify housemates of the payment status of these shares? 
+
+roomiepayup is for you!
+
+roomiepayup is an application that allows a user to:
+
+* Create a household and assign housemates to that household
+* Enter bill amounts
+* Split bill amounts into shares and assign each share to a housemate(including themselves)
+* Notify housemates that a share has been assigned to them by email
+* Enter received share payments from fellow housemates into the app
+* Mark a bill as all shares received when all housemate shares have been paid to the user
+* Mark a bill as paid once the user has paid the bill using money collected from housemates
+
+
+manage their household bills  This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 2.2.3
 
 * System dependencies
 
