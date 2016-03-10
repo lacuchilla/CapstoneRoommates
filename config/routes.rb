@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "households#index"
+  root "users#index"
   resources :households do
     resources :bills do
       resources :shares do
