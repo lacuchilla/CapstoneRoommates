@@ -37,8 +37,10 @@ RSpec.describe UsersController, type: :controller do
         user:{
           uid: "Something something something",
           username: "Yin-Yarn",
-          provider: "twitter"
-        }
+          provider: "twitter",
+          email: "amyrhunter@gmail.com"
+        },
+        id: new_user.id
       }
     end
 
@@ -62,10 +64,11 @@ RSpec.describe UsersController, type: :controller do
       expect(User.last).to eq last_user
     end
 
-    it "redirects to users index page with good params" do
-      post :create, params
+    it "redirects to user page with good params" do
+      new_user.save
+      post :create, params.merge(id: 2)
       # Success case to index page
-      expect(subject).to redirect_to users_path
+      expect(subject).to redirect_to user_path
       # Error case to
     end
 
