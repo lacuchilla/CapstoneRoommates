@@ -10,11 +10,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params[:user])
-    if @user.save
-      redirect_to users_path
-    else
-      render :new
+    @user = User.new(user_params[:user])
+
+    # respond_to do |format|
+      if @user.save
+    #     UserMailer.welcome_email(@user).deliver_later
+    #     format.html { redirect_to(@user, notice: 'User was successfully created.') }
+    #     format.json { render json: @user, status: :created, location: @user }
+        redirect_to users_path
+      else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+        render :new
+    #     binding.pry
+    #   end
     end
   end
 

@@ -12,12 +12,10 @@ class SharesController < ApplicationController
   def new
     @share = Share.new(share_params[:share])
     @specific_household = Household.find(params[:household_id])
-  # @company = Company.person.find(@company_id(params[:id]))
-    @household_bills = @specific_household.bills
     @specific_bill = Bill.find(params[:bill_id])
     @date = @specific_bill.due_date
     @shares = @specific_bill.shares
-    
+
   end
 
   def create
