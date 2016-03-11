@@ -17,6 +17,7 @@ class SharesController < ApplicationController
     @specific_bill = Bill.find(params[:bill_id])
     @date = @specific_bill.due_date
     @shares = @specific_bill.shares
+    
   end
 
   def create

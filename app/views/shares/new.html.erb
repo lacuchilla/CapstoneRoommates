@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td><%= @specific_bill.name %></td>
-          <td><%= @specific_bill.total_amount %></td>
+          <td><%= humanized_money_with_symbol(@bill_amount) %></td>
           <td><%= @date.strftime("%m/%d/%Y") %></td>
           <td><%= @specific_bill.paid %></td>
         </tr>

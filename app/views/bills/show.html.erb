@@ -13,7 +13,7 @@
         </tr>
         <tr>
           <td><%= @bill.name %></td>
-          <td><%= humanized_money_with_symbol(@bill.total_amount) %></td>
+          <td><%= number_to_currency(@bill.total_amount_cents) %></td>
           <td><% if @bill.paid == "f" %>
                 <%= "no" %>
               <% elsif @bill.paid == "t" %>

@@ -22,6 +22,7 @@ CodeClimate::TestReporter.start
 require "factory_girl"
 require "simplecov"
 require "rails_helper"
+require "money-rails/test_helpers"
 
 SimpleCov.start do
   add_filter 'spec/'
