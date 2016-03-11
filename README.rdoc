@@ -1,11 +1,26 @@
-== README
+== RoomiePayUp
 
-This README would normally document whatever steps are necessary to get the
+Have you ever had a living situation where there was not a consistent way to keep track of payment of house expenses like rent, electricity, internet, etc.? Have you been looking for a way to split a bill into shares among housemates, and be able to notify housemates of the payment status of these shares? 
+
+roomiepayup is for you!
+
+roomiepayup is an application that allows a user to:
+
+* Create a household and assign housemates to that household
+* Enter bill amounts
+* Split bill amounts into shares and assign each share to a housemate(including themselves)
+* Notify housemates that a share has been assigned to them by email
+* Enter received share payments from fellow housemates into the app
+* Mark a bill as all shares received when all housemate shares have been paid to the user
+* Mark a bill as paid once the user has paid the bill using money collected from housemates
+
+
+manage their household bills  This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 2.2.3
 
 * System dependencies
 
@@ -26,3 +41,37 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+Capstone Project Plan
+
+Background
+
+I have lived in a housing situation with six other roommates. We have one housemate who is in charge of collecting each person's share of the rent money, depositing it into a house bank account, then writing a check to our landlord and sending out the check to the landlord in the mail on the first of every month. There was a system in place using an excel spreadsheet and individual emails to members of the household concerning bills, and I wanted to make a rails app that would be able to save all of the data concerning household bills and let the user interact with the information in a more user-friendly interface, as well as keeping all records in order to help manage household expenses.  
+
+Problem Statement
+
+An app for households that have bills split among multiple housemates that will allow the person in charge of the finances of the household to be able to create to the person in the house responsible for the bills and keep track of date and amount of payments, as well as be able to send reminders for missing payments. This app will focus on the payment of rent, with future iterations allowing for different types of bills.
+
+Market Research
+
+Competition-Splitwise, Settleup. These apps deal with bills that have already been paid and keep track of paying people back, not collecting money for an existing bill and then paying the bill from that collected money. Settleup uses paypal, and I believe splitwise uses Paypal as well. My app will have similar features to these apps, but framed in the context of housemates rather than friends or acquaintances who owe money.
+
+Splitwise doesn't save uneven split settings for bills. Splitwise doesn't have custom categories or ability to save details on recurring bills. Splitwise doesn't give you the opportunity to edit recurring bills that vary in cost month to month.
+
+I was able to ge a lot of my information for market research from the Splitwise forum: http://feedback.splitwise.com/forums/162446-general
+
+My app will differentiate from these other apps because it is emphasizing the element of communication between bill payers and clarity of the payment process as much as doing the payment job effectively. A lot of these apps have a ton of features and I want to focus on keeping it small to start out with. There will be email notifications like in these other apps, but they will be sent keeping the fact that the bill payer and bill recipient live with each other. I am also planning to use stripe as the payment service. Many of the others use paypal, or have a choice of various payment options. My app will be different also in the fact that it will be able to record payments by cash or by check number. I will also make it so that administrators for accounts can add the payments into the system manually.
+
+User personas
+
+Main target user groups are going to be single people in their twenties and thirties renting a living space with two or more other people. This app will encourage more open communication and accountability about bills with the email notifications and the ability to see a list of all bills that have been paid. Their common characteristics will be that they are busy and may not necessarily be forthcoming with talking about finances or already have a system in place to keep track of paid bills. Th
+
+Technology Selections
+
+Rails
+Action Mailer: http://guides.rubyonrails.org/action_mailer_basics.html
+OmniAuth
+SSL
+Ability to accept online payments (currently planning on using Stripe but open to using another technology)
+Travis for Continuous Integration
+Trello Link
