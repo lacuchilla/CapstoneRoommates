@@ -49,8 +49,37 @@
     </table>
   </div>
 </div>
-<h5>Bill Amount Unaccounted for</h5>
+<div class = "row">
+<div class = "col-md-6">
+  <h5>Bill Amount Unaccounted for</h5>
+  <%= humanized_money_with_symbol(@specific_bill.amount_remaining) %>
+  <h4>Create a New Share</h4>
+  <%= form_for @share, url: {action: "create"} do |b| %>
+    <fieldset>
+      <legend><%= @legend %></legend>
+      <div class="form-group">
+        <%= b.label :due_date %>
+        <%= b.date_field :due_date %>
+      </div>
+      <div class="form-group">
+        <%= b.label :share_amount %>
+        <%= b.text_field :share_amount, data: { role: 'money', a_sep: '.', a_dec: ',' }%>
+      </div>
+      <div class="form-group">
+        <%= b.label :person_responsible %>
+        <%= b.collection_select(:user_id, User.all, :id, :username, prompt: "Select") %>
+      </div>
+      <div class="form-group">
+        <%= b.label :paid %>
+        <%= b.check_box :paid %>
+      </div>
+    </fieldset>
+    <%= b.submit("Save") %>
+  <% end%>
+<%= link_to "Back to home page", root_path, class: "btn btn-default" %>
+</div>
 
+<div class="col-md-6">
 <span>
 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="350" height="430" id="CalculatorID" title="Embed Calculator">
   <param name="movie" value="http://www.embedcalculator.com/flash/StandardCalculator.swf" />
@@ -68,7 +97,7 @@
     <param name="swfversion" value="9.0.45.0" />
     <param name="expressinstall" value="http://www.embedcalculator.com/Scripts/expressInstall.swf" />
     <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
-    <div>
+  <div>
       <h4><a href="http://www.embedcalculator.com">Embed Calculator</a> requires a newer version of Adobe Flash Player.</h4>
       <p>You must have the current version of the adobe flash player to use this <a href="http://www.embedcalculator.com">online calculator</a>.</p>
     </div>
@@ -80,30 +109,5 @@
 <script type="text/javascript">
       swfobject.registerObject("CalculatorID");
       </script>
-
-
-<h4>Create a New Share</h4>
-<div>
-<%= form_for @share, url: {action: "create"} do |b| %>
-  <fieldset>
-    <legend><%= @legend %></legend>
-    <div class="form-group">
-      <%= b.label :due_date %>
-      <%= b.date_field :due_date %>
-    </div>
-    <div class="form-group">
-      <%= b.label :share_amount %>
-      <%= b.number_field :share_amount, data: { role: 'money', a_sep: '.', a_dec: ',' }%>
-    </div>
-    <div class="form-group">
-      <%= b.label :person_responsible %>
-      <%= b.collection_select(:user_id, User.all, :id, :username, prompt: "Select") %>
-    </div>
-    <div class="form-group">
-      <%= b.label :paid %>
-      <%= b.check_box :paid %>
-    </div>
-  </fieldset>
-  <%= b.submit("Save") %>
-<% end%>
-<%= link_to "Back to home page", root_path, class: "btn btn-default" %>
+</div>
+</div>

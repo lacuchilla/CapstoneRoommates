@@ -76,19 +76,6 @@ class SharesController < ApplicationController
     @url = "update"
   end
 
-  def bill_amount_unacounted_for
-    @specific_bill = Bill.find(params[:bill_id])
-    @specific_share = Share.find(params[:share_id])
-    @share_amount = @specific_share.share_amount
-    @share_amounts =
-    @amount_remaining
-#get bill amount
-#have empty array to store share amounts
-#iterate through created shares
-#get share_amount values for each of them
-#push share_amount to empty array
-#display total amount of created shares for that bill on the screen
-  end
 
 private
   def share_params
