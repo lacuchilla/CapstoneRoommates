@@ -17,6 +17,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ body {
+   background: asset_url('gray-micro-fiber-cloth-fabric-texture.jpg') no-repeat center center scroll;
+ }
+
  .calculator {
    display: inline
  }
