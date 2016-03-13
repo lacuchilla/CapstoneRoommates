@@ -18,9 +18,8 @@
       </tbody>
     </table>
   </div>
-</div>
-<h4>Household Members</h4>
 <div class="col-md-6">
+  <h4>Household Members</h4>
   <table class="table table-striped">
     <tbody>
       <tr>
@@ -28,17 +27,18 @@
         <th>Email</th>
       </tr>
       <tr>
-        <%= @houshold_users.each do |user| %>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td><%= @household.move_in_date.strftime("%m/%d/%Y")%></td>
+        <% @household_users.each do |user| %>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
       </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
+</div>
 <%= link_to "Back to Households Page", households_path, class: "btn btn-default" %>
 <%= link_to "Edit Household", edit_household_path(@household.id), class: "btn btn-default" %>
-<%= link_to "Delete Household", household_path(@household.id), :method => :delete,
+<%= link_to "Delete Household", household_path(@household.id), method: "delete",
     data: { confirm: "Are you sure you want to delete this household?"}, class: "btn btn-default" %>
 <%= link_to "View Bills for #{@household.name}", household_bills_path(@household.id), class: "btn btn-default" %>
-<%= link_to ""%>
+<%= link_to "View housemates for #{@household.name}", users_path %>

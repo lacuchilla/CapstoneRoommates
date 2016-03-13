@@ -1,5 +1,5 @@
 <% if current_user.nil? %>
-  <%= image_tag("images/copperplate-s.png") %>
+  <%= image_tag("copperplate-s.png") %>
   <h1 class="welcome"><a href="/auth/twitter">Log In With Twitter</a></h1>
 <% else %>
   <h6><%= link_to "Log Out", logout_path %></li>

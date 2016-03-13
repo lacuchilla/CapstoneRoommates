@@ -23,6 +23,7 @@ class HouseholdsController < ApplicationController
 
   def show
     @household = Household.find(params[:id])
+    @household_users = @household.users
   end
 
   def edit
