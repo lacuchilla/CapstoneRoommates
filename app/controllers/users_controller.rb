@@ -12,18 +12,14 @@ class UsersController < ApplicationController
   def create
     # POST /users
     # POST /users.json
+    @specific_household = Household.find(params[:id])
     @user = User.new(user_params[:user])
-
-    respond_to do |format|
+    @user.household = @specific_household
       if @user.save
-        UserMailer.welcome_email(@user).deliver_now
-        format.html { redirect_to(@user, notice: 'User was successfully created.') }
-        format.json { render json: @user, status: :created, location: @user }
+        redirect_to household_path(@specifichousehold.id)
       else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   def show

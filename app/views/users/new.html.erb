@@ -1,0 +1,19 @@
+<h4>Add a New Housemate</h4>
+<%= form_for @user, url: {action: "create"} do |b| %>
+  <fieldset>
+    <legend><%= @legend %></legend>
+    <div class="form-group">
+      <%= b.label :name %>
+      <%= b.text_field :name %>
+    </div>
+    <div class="form-group">
+      <%= b.label :email %>
+      <%= b.text_field :email %>
+    </div>
+    <div class="form-group">
+      <%= b.label :move_in_date %>
+      <%= b.date_field :move_in_date %>
+    </div>
+  </fieldset>
+  <%= b.submit("Save") %>
+<% end %>
