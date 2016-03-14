@@ -37,7 +37,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Add a Housemate", new_user_path, class: "btn btn-default" %>
+  <%= link_to "Add a Housemate", new_household_user_path(@household.id), class: "btn btn-default" %>
 </div>
 </div>
 <%= link_to "Back to Households Page", households_path, class: "btn btn-default" %>

@@ -8,9 +8,8 @@ Rails.application.routes.draw do
         patch :share_status, to: 'shares#update_share_status'
       end
     end
+    resources :users
   end
-
-  resources :users
 
   get '/login' => 'sessions#new', :as => :login
   get '/logout' => 'sessions#destroy'

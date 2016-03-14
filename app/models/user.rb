@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   belongs_to :household
   has_many :shares, dependent: :destroy
 
-  validates :uid, :username, :provider, presence: true
-  validates :uid, :username, uniqueness: true
+  # validates :uid, :username, :provider, presence: true
+  # validates :uid, :username, uniqueness: true
 
   def self.find_or_create_from_omniauth(auth_hash)
     user = self.find_by(uid: auth_hash["uid"], provider: auth_hash["provider"] )

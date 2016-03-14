@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   def create
     # POST /users
     # POST /users.json
-    @specific_household = Household.find(params[:id])
+    @specific_household = Household.find(params[:household_id])
     @user = User.new(user_params[:user])
     @user.household = @specific_household
       if @user.save
-        redirect_to household_path(@specifichousehold.id)
+        redirect_to household_path(params[:household_id])
       else
         render :new
       end
