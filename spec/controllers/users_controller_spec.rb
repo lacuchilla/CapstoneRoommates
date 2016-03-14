@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   let(:new_user) { create(:user)}
+  let(:this_bill) {create (:household)}
 
   describe "GET 'index'" do
     it "is successful" do

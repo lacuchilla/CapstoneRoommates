@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  get "/.well-known/acme-challenge/#{ENV['LE_AUTH_REQUEST']}", to: 'users#letsencrypt'
   get '/login' => 'sessions#new', :as => :login
   get '/logout' => 'sessions#destroy'
 

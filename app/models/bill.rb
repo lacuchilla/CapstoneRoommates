@@ -4,6 +4,7 @@ class Bill < ActiveRecord::Base
 
   validates :name, :total_amount_cents, :paid, :due_date, presence: true
   monetize :total_amount_cents
+  after_save :amount_remaining_cents
   monetize :amount_remaining_cents
 
   enum bill_status: [:created, :created_unpaid_shares, :created_all_shares_paid, :bill_paid]

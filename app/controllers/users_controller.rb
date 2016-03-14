@@ -15,11 +15,17 @@ class UsersController < ApplicationController
     @specific_household = Household.find(params[:household_id])
     @user = User.new(user_params[:user])
     @user.household = @specific_household
+    respond_to do |format|
       if @user.save
-        redirect_to household_path(params[:household_id])
+        UserMailer.welcome_email(@user).deliver_now
+
+          format.html { redirect_to(@user, notice: 'User was successfully created.') }
+          format.json { render json: @user, status: :created, location: @user }
       else
-        render :new
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   def show
@@ -52,6 +58,6 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.permit(user: [:username, :email, :uid, :provider, :avatar_url, :image_url, :household_id])
+    params.permit(user: [:username, :email, :uid, :provider, :avatar_url, :image_url, :household_id, :name])
   end
 end

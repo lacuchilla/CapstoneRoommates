@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
-  require 'test_helper'
 
   class UserMailerTest < ActionMailer::TestCase
     test "invite" do
