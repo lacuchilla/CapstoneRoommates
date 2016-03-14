@@ -47,7 +47,7 @@ class SharesController < ApplicationController
   def update
     @share = Share.update(params[:id], share_params[:share])
       if @share.save
-        redirect_to household_bill_shares_path
+        redirect_to new_household_bill_share_path
       else
         render :edit
       end

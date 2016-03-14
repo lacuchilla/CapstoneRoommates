@@ -9,7 +9,10 @@
 </head>
 <body>
 <div class="container">
-<%= render "shared/nav" %>
+<%= breadcrumbs pretext: "You are here: ",
+                separator: " &rsaquo; ",
+                display_single_fragment: true,
+                style: :bootstrap %>
   <%= yield %>
 </div>
 </body>

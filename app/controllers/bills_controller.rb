@@ -4,6 +4,7 @@ class BillsController < ApplicationController
     @specific_household = Household.find(params[:household_id])
   # @company = Company.person.find(@company_id(params[:id]))
     @specific_household.bills
+    @bills = Bill.all
   end
 
   def new
@@ -57,7 +58,7 @@ class BillsController < ApplicationController
 
 private
   def bill_params
-    params.permit(:household_id, bill: [:name, :total_amount, :paid, :due_date, :payment_type, :bill_status])
+    params.permit(:household_id, bill: [:id, :name, :total_amount, :paid, :due_date, :payment_type, :bill_status])
   end
 
 end

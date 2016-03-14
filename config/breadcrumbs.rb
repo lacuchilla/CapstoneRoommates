@@ -8,10 +8,28 @@ crumb :households do
 end
 
 crumb :household do |household|
-  link household.name, household_path(household)
+  link household.name, household
+  parent :root
+end
+
+crumb :edit_household do |household|
+  link "Edit #{household.name}", name
+  parent :household, household
+end
 
 crumb :bills do
-  link ""
+  link "All Bills for Household", household_bills_path
+  parent :household, household
+end
+
+crumb :bill do |bill|
+  link bill.name, bill
+  parent :household
+end
+
+crumb :edit_bill do |bill|
+  link "Edit #{bill.name}", name
+  parent :bill, bill
 end
 # crumb :projects do
 #   link "Projects", projects_path

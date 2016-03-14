@@ -30,6 +30,7 @@
           <th>Amount</th>
           <th>Share Due Date</th>
           <th>Paid?</th>
+          <th>Edit Share</th>
           <th>Payment Type</th>
           <th>Date Received</th>
         </tr>
@@ -39,6 +40,7 @@
           <td><%= humanized_money_with_symbol(share.share_amount) %></td>
           <td><%= share.due_date.strftime("%m/%d/%Y") %></td>
           <td><%= share.paid %></td>
+          <td><%= link_to "Edit Share", edit_household_bill_share_path(@specific_household.id, @specific_bill.id, share.id)%></td>
           <% if share.paid %>
             <td><%= share.payment_type %></td>
             <td><%= share.date_received.strftime("%m/%d/%Y") %></td>

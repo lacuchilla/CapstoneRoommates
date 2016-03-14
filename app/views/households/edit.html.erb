@@ -1,3 +1,5 @@
+<% breadcrumb :edit_household, @household %>
+
 <%= form_for @household, url: {action: "#{@url}"} do |b| %>
   <fieldset>
     <legend><%= @legend %></legend>
