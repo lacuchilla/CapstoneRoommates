@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       if @user.save
         UserMailer.welcome_email(@user).deliver_now
 
-          format.html { redirect_to(@user, notice: 'User was successfully created.') }
+          format.html { redirect_to(@specific_household, notice: 'User was successfully created.') }
           format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: 'new' }
