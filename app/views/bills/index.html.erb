@@ -14,10 +14,10 @@
           <th>Shares</th>
         </tr>
         <tr>
-        <% @specific_household.bills.each do |bill| %>
-          <% if bill.bill_status == "created" %>
-            <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
-            <td><%= link_to "Update Share Status", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
+          <% @specific_household.bills.each do |bill| %>
+            <% if bill.bill_status == "created" %>
+              <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
+              <td><%= link_to "Update Share Status", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
         </tr>
           <% end %>
         <% end %>

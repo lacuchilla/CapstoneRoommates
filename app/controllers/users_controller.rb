@@ -45,6 +45,10 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def letsencrypt
+    render plain: ENV['LE_AUTH_RESPONSE']
+  end
+
 private
 
   def user_params
