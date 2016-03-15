@@ -1,8 +1,6 @@
 class HouseholdsController < ApplicationController
   def index
     @households = Household.all
-    @household = Household.find(params[:id])
-    @household_users = @household.users
   end
 
   def new
