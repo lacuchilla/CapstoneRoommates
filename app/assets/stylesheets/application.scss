@@ -23,7 +23,7 @@ body {
   display: compact;
 }
 
-div {
+.container {
   background-color: #a4b6ba;
   opacity: 0.95;
   padding: 30px;
@@ -32,7 +32,10 @@ div {
 
 .dollar-sign {
   margin: 10px;
-  display: inline;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
 }
 
  .calculator {
@@ -46,5 +49,22 @@ div {
   font-family: 'Copperplate', serif;
   font-size: 80px;
   margin-top: 20px;
+  text-align: center;
+}
+
+.login {
+  font-family: 'Palatino Linotype', serif;
+}
+.link_to_twitter {
+  text-align: center;
+  font-family: 'Palatino Linotype', serif;
+}
+.table {
+  background-color: #e1c2ad;
+  opacity: 0.95;
+  padding: 30px;
+  margin: 60px;
+}
+.something {
   text-align: center;
 }

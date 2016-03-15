@@ -1,9 +1,12 @@
 <% if current_user.nil? %>
-  <h1 class="welcome"><%= link_to "Log In With Twitter", login_path %></h1>
+  <%= image_tag "copperplate-s.png", class: "dollar-sign" %>
+  <h1 class="title">RoomiePayUp.com</h1>
+  <h1 class="welcome"><%= link_to "Log In With Twitter", login_path, class: "login" %></h1>
+  <h3 class="link_to_twitter">Don't have a Twitter account? <a href="https://www.twitter.com" target="_blank">Sign up here</a></h3>
 <% else %>
   <h6><%= link_to "Log Out", logout_path %></li>
 
-<h4>All Households</h4>
+<h3 class="something">All Households</h3>
 <div class="row">
   <div class="col-md-6">
     <table class="table table-striped">
@@ -20,8 +23,6 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-  <div>
     <%= link_to "Create a New Household", new_household_path, class: "btn btn-default" %>
   </div>
   <% end %>
