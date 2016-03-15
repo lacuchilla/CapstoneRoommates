@@ -17,23 +17,23 @@ crumb :edit_household do |household|
   parent :household, household
 end
 
-# crumb :bills do
-#   link "All Bills for Household", household_bills_path
-#   parent :household, household
-# end
-#
+crumb :bills do
+  link "All Bills for Household", household_bills_path
+  parent :household, household
+end
+
 crumb :bill do |bill|
   link bill.name, bill
   parent :household
 end
-#
-# crumb :edit_bill do |bill|
-#   link "Edit #{bill.name}", name
-#   parent :bill, bill
-# end
-# crumb :projects do
-#   link "Projects", projects_path
-# end
+
+crumb :edit_bill do |bill|
+  link "Edit #{bill.name}", name
+  parent :bill, bill
+end
+crumb :projects do
+  link "Projects", projects_path
+end
 
 # crumb :project do |project|
 #   link project.name, project_path(project)

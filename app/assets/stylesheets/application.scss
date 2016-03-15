@@ -18,16 +18,17 @@
  @import "bootstrap";
 
 body {
-  background-image: url('stockvault-dollars135472.jpg');
+  background: image-url('stockvault-dollars135472.jpg') no-repeat center center fixed;
   background-size: 1440px 800px;
   display: compact;
+  font-family: "Georgia", serif;
 }
 
 .container {
   background-color: #a4b6ba;
   opacity: 0.95;
   padding: 30px;
-  margin: 60px;
+  margin: auto;
 }
 
 .dollar-sign {
@@ -63,8 +64,10 @@ body {
   background-color: #e1c2ad;
   opacity: 0.95;
   padding: 30px;
-  margin: 60px;
 }
 .something {
   text-align: center;
+}
+.t {
+  font-family: 'Palatino Linotype', serif;
 }
