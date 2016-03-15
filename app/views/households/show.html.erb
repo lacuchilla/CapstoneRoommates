@@ -20,7 +20,9 @@
       </tbody>
     </table>
     <%= link_to "View Bills for #{@household.name}", household_bills_path(@household.id), class: "btn btn-default" %>
+    <%= link_to "View Housemates for #{@household.name}", household_users_path(@household.id), class: "btn btn-default" %>
   </div>
+</div>
 <div class="col-md-6">
   <h4>Household Members</h4>
   <table class="table table-striped">

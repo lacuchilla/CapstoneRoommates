@@ -29,9 +29,8 @@
   </div>
 </div>
 <div>
-  <%= link_to "View All Bills For This Household", household_bills_path(@specific_household.id), class: "btn btn-default" %>
+  <%= link_to "View All Bills For #{@specific_household.name}", household_bills_path(@specific_household.id), class: "btn btn-default" %>
   <%= link_to "Edit This Bill", edit_household_bill_path(@specific_household.id, @bill.id), class: "btn btn-default" %>
-  <%= link_to "Return to Home Page", root_path, class: "btn btn-default"%>
   <%= link_to "Delete Bill", household_bill_path(@specific_household.id, @bill.id), :method => :delete,
       data: { confirm: "Are you sure you want to delete this bill?"}, class: "btn btn-default" %>
   <%= link_to "Show Shares", household_bill_shares_path(@specific_household.id, @bill.id), class: "btn btn-default" %>

@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
   def index
+    @specific_household = Household.find(params[:household_id])
     @users = User.all
     @households = Household.all
+    @household_users = @specific_household.users
   end
 
   def new

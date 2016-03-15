@@ -22,6 +22,7 @@ body {
   background-size: 1440px 800px;
   display: compact;
   font-family: "Georgia", serif;
+  margin-top: 50px;
 }
 
 .container {
@@ -29,6 +30,7 @@ body {
   opacity: 0.95;
   padding: 30px;
   margin: auto;
+  border: 1px solid #060807;
 }
 
 .dollar-sign {
@@ -70,4 +72,13 @@ body {
 }
 .t {
   font-family: 'Palatino Linotype', serif;
+}
+.title-site {
+  font-family: 'Copperplate', serif;
+  font-size: 30px;
+  color: #060807;
+}
+
+.dollar-nav {
+  width: 30px;
 }
