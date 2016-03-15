@@ -9,10 +9,14 @@
 </head>
 <body>
 <div class="container">
-<%= breadcrumbs pretext: "You are here: ",
+  <%= breadcrumbs pretext: "You are here: ",
                 separator: " &rsaquo; ",
                 display_single_fragment: true,
-                style: :bootstrap %>
+                style: :bootstrap
+                %>
+  <%= image_tag "copperplate-s.png", class: "dollar-sign" %>
+
+  <h1 class="title">RoomiePayUp.com</h1>
   <%= yield %>
 </div>
 </body>

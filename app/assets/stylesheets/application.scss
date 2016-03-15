@@ -17,14 +17,34 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- body {
-   background: asset_url('gray-micro-fiber-cloth-fabric-texture.jpg') no-repeat center center scroll;
- }
+body {
+  background-image: url('stockvault-dollars135472.jpg');
+  background-size: 1440px 800px;
+  display: compact;
+}
+
+div {
+  background-color: #a4b6ba;
+  opacity: 0.95;
+  padding: 30px;
+  margin: 60px;
+}
+
+.dollar-sign {
+  margin: 10px;
+  display: inline;
+}
 
  .calculator {
    display: inline
  }
 
 .welcome {
+  text-align: center;
+}
+.title {
+  font-family: 'Copperplate', serif;
+  font-size: 80px;
+  margin-top: 20px;
   text-align: center;
 }
