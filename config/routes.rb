@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get "/.well-known/acme-challenge/#{ENV['LE_AUTH_REQUEST']}", to: 'welcome#letsencrypt'
   get '/login' => 'sessions#new', :as => :login
   get '/logout' => 'sessions#destroy'
-
-  get "/auth/:provider/callback", to: "sessions#create"
+# TODO Change this back to provider later
+  get "/auth/twitter/callback", to: "sessions#create"
 
   post "/auth/developer/callback", to: "sessions#create"
 

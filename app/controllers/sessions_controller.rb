@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     provider = params[:format]
-    redirect_to "/auth/#{provider}"
+    redirect_to "/auth/twitter"
   end
 
   def create
