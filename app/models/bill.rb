@@ -2,11 +2,11 @@ class Bill < ActiveRecord::Base
   has_many :shares
   belongs_to :household
 
-  validates :name, :total_amount_cents, :paid, :due_date, presence: true
+  # validates :name, :total_amount_cents, :paid, :due_date, presence: true
   monetize :total_amount_cents
   after_save :amount_remaining_cents
   monetize :amount_remaining_cents
-
+  before_save :set_status
   enum bill_status: [:created, :created_unpaid_shares, :created_all_shares_paid, :bill_paid]
 
   def amount_remaining_cents
@@ -17,5 +17,11 @@ class Bill < ActiveRecord::Base
     end
     amount = self.total_amount_cents - total_amount_of_shares
     return amount
+  end
+
+  def set_status
+    if self.shares.none?
+      self.bill_status = 0
+    end
   end
 end

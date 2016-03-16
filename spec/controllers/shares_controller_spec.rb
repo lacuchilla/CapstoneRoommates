@@ -56,17 +56,15 @@ describe "POST 'create'" do
       share:{
         share_amount_cents: nil
       },
-      household_id: 1,
-      bill_id: 2
+      household_id: this_household.id,
+      bill_id: this_bill.id,
+      id: new_share.id
     }
   end
 
   it "creates a share" do
-    new_share.save
-    last_share = Share.last
     post :create, share_params.merge(household_id: this_household.id, bill_id: this_bill.id)
-    new_share.reload
-    expect(Share.last).to_not eq last_share
+    expect(new_share.share_amount_cents).to eq 50000
   end
 
   it "does not create a share when bad params are used" do
@@ -158,6 +156,68 @@ describe "DELETE 'destroy'" do
     new_share.save
     delete :destroy, id: new_share.id, household_id: this_household.id, bill_id: this_bill.id
     expect(subject).to redirect_to household_bill_shares_path
+  end
+end
+
+describe "GET 'share_status'" do
+  it "renders the share_status view" do
+    new_share.save
+    get :share_status, household_id: this_household.id, bill_id: this_bill.id, share_id: new_share.id
+    expect(subject).to render_template :share_status
+  end
+end
+
+describe "PATCH 'share_status'" do
+  let(:share_params) do
+    {
+      share:{
+        bill_id: 1,
+        due_date: "2016-02-29 19:41:22",
+        share_amount_cents: 50000,
+        paid: false,
+      },
+      household_id: 1,
+      bill_id: 2
+    }
+
+  end
+
+  let(:bad_share_params) do
+    {
+      share:{
+        share_amount_cents: nil
+      },
+      household_id: 1,
+      bill_id: 2
+    }
+  end
+
+  it "updates the share with good params" do
+    new_share.save
+    before_update = new_share.attributes
+    patch :update, share_params.merge(household_id: this_household.id, bill_id: this_bill.id, id: new_share.id)
+    new_share.reload
+    expect(new_share.attributes).to_not eq before_update
+  end
+
+  it "does not update the share with bad params" do
+    new_share.save
+    patch :update, bad_share_params.merge(household_id: this_household.id, bill_id: this_bill.id, id: new_share.id)
+    new_share.reload
+    expect(new_share.share_amount_cents).to eq 1
+  end
+
+  it "redirects to the share's show page after a successful update" do
+    new_share.save
+    patch :update, share_params.merge(household_id: this_household.id, bill_id: this_bill.id, id: new_share.id)
+    # Success case to index page
+    expect(subject).to redirect_to household_bill_shares_path
+  end
+
+  it "shows the edit share page when attempting to update with bad params" do
+    new_share.save
+    patch :update, bad_share_params.merge(household_id: this_household.id, bill_id: this_bill.id, id: new_share.id)
+    expect(subject).to render_template :edit
   end
 end
 

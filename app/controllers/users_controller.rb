@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def update
     @user = User.update(params[:id], user_params[:user])
       if @user.save
-        redirect_to user_path(params[:id])
+        redirect_to household_user_path(params[:id])
       else
         render :edit
       end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.destroy(params[:id])
-    redirect_to users_path
+    redirect_to household_users_path
   end
 
   def letsencrypt
