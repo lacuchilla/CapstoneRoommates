@@ -11,11 +11,6 @@ RSpec.describe SessionsController, type: :controller do
             expect(response).to redirect_to root_path
           end
 
-          it "goes to login page" do
-            get :new, provider: :developer
-            expect(response).to redirect_to "http://test.host/auth/"
-          end
-
           it "creates a user" do
             expect { get :create, provider: :twitter }.to change(User, :count).by(1)
           end

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe SharesController, type: :controller do
   let(:this_household) { create(:household)}
-  let(:this_bill) { create(:bill) }
+  let(:this_bill) { create(:bill)}
+  let(:this_user) { create(:user)}
   let(:new_share) { build(:share)}
   let(:bad_share) { build(:share, share_amount: nil)}
 
