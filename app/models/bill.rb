@@ -19,9 +19,26 @@ class Bill < ActiveRecord::Base
     return amount
   end
 
+  def check_bill_status
+    set_status
+  end
+
   def set_status
-    if self.shares.none?
+    if self.shares.none? && self.paid == "f"
       self.bill_status = 0
+      "created"
+    elsif self.shares.any? { |s| s.paid == false }
+      self.bill_status = 1
+      "created_unpaid_shares"
+    elsif self.shares.all? { |s| s.paid == true } && self.paid == "f"
+      self.bill_status = 2
+      "created_all_shares_paid"
+    elsif self.shares.all? { |s| s.paid == true } && self.paid == "t"
+      self.bill_status = 3
+      "bill_paid"
+
+    else
+      "I don't know what status this is"
     end
   end
 end

@@ -13,14 +13,22 @@
           <th>Bills That Haven't Yet Been Split</th>
           <th>Shares</th>
         </tr>
-        <tr>
+            <% @found_bills = false %>
             <% @specific_household.bills.each do |bill| %>
-            <% if bill.bill_status == "created" %>
-              <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
-              <td><%= link_to "Update Share Status", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
-        </tr>
-          <% end %>
+            <% if bill.check_bill_status == "created" %>
+              <tr>
+                <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
+                <td><%= link_to "Update Share Status", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
+                <% @found_bills = true %>
+              </tr>
+            <% end %>
         <% end %>
+        <% if @found_bills != true %>
+            <tr>
+              <td>There are no bills that have this status.</td>
+            </tr>
+        <% end %>
+
 
       </tbody>
     </table>
@@ -35,13 +43,20 @@
           <th>Bills With Outstanding Shares</th>
           <th>Shares</th>
         </tr>
-        <tr>
+          <% @found_bills = false %>
         <% @specific_household.bills.each do |bill| %>
-          <% if bill.bill_status == "created_unpaid_shares" %>
-            <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
-            <td><%= link_to "Update Share Status", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
-        </tr>
+          <% if bill.check_bill_status == "created_unpaid_shares" %>
+            <tr>
+              <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
+              <td><%= link_to "Update Share Status", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
+            </tr>
+            <% @found_bills = true %>
           <% end %>
+        <% end %>
+        <% if @found_bills != true %>
+            <tr>
+              <td>There are no bills that have this status.</td>
+            </tr>
         <% end %>
 
       </tbody>
@@ -56,13 +71,20 @@
           <th>All Shares Received</th>
           <th>Shares</th>
         </tr>
-        <tr>
+        <% @found_bills = false %>
         <% @specific_household.bills.each do |bill| %>
-          <% if bill.bill_status == "created_all_shares_paid" %>
-            <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
-            <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
-        </tr>
+          <% if bill.check_bill_status == "created_all_shares_paid" %>
+            <tr>
+              <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
+              <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
+              <% @found_bills = true %>
+            </tr>
           <% end %>
+        <% end %>
+        <% if @found_bills != true %>
+            <tr>
+              <td>There are no bills that have this status.</td>
+            </tr>
         <% end %>
 
       </tbody>
@@ -78,13 +100,22 @@
           <th>Shares</th>
         </tr>
         <tr>
+        <% @found_bills = false %>
         <% @specific_household.bills.each do |bill| %>
-          <% if bill.bill_status == "bill_paid" %>
+          <% if bill.check_bill_status == "bill_paid" %>
+            <tr>
             <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
             <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
-        </tr>
+            <% @found_bills = true %>
+          </tr>
           <% end %>
         <% end %>
+        <% if @found_bills != true %>
+            <tr>
+            <td>There are no bills that have this status.</td>
+            </tr>
+        <% end %>
+
       </tbody>
     </table>
   </div>
