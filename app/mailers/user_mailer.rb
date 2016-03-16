@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
    @url  = 'https://www.roomiepayup.com'
 
    mail(to: @user.email,
-         subject: "Welcome to My Awesome Site",
+         subject: "You have been added as a housemate for your household on RoomiePayUp.com",
          )
   end
 
