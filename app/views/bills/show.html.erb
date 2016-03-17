@@ -16,9 +16,9 @@
         <tr>
           <td><%= @bill.name %></td>
           <td><%= number_to_currency(@bill.total_amount) %></td>
-          <td><% if @bill.paid == "f" %>
+          <td><% if @bill.paid == false %>
                 <%= "no" %>
-              <% elsif @bill.paid == "t" %>
+              <% elsif @bill.paid == true %>
                 <%= "yes" %>
               <% end %>
           </td>

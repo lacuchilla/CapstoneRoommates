@@ -6,19 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 seed_bills = [
-  {name: "October 2015 Rent", total_amount: 3000.99, due_date: "2015-10-01 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "November 2015 Rent", total_amount: 3000, due_date: "2015-11-01 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "December 2015 Rent", total_amount: 3000, due_date: "2015-12-01 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "January 2016 Rent", total_amount: 3000, due_date: "2016-01-01 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "February 2016 Rent", total_amount: 3000, due_date: "2016-02-01 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "March 2016 Rent", total_amount: 3000, due_date: "2016-03-01 00:00:00", household_id: 1, paid: "f", bill_status: 3},
-  {name: "April 2016 Rent", total_amount: 3000, due_date: "2016-04-01 00:00:00", household_id: 1, paid: "t", bill_status: 1},
-  {name: "January 2016 PSE", total_amount: 104.49, due_date: "2016-01-10 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "January 2016 Internet", total_amount: 75.50, due_date: "2016-01-10 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "December 2015 PSE", total_amount: 92.25, due_date: "2016-12-10 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "December 2015 Seattle City Light", total_amount: 69.02, due_date: "2016-12-10 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "December 2015 Utilities", total_amount: 534.45, due_date: "2016-12-10 00:00:00", household_id: 1, paid: "t", bill_status: 3},
-  {name: "December 2015 House Supplies", total_amount: 23.33, due_date: "2016-12-10 00:00:00", household_id: 1, paid: "t", bill_status: 3},
+  {name: "October 2015 Rent", total_amount: 3000.99, due_date: "2015-10-01 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "November 2015 Rent", total_amount: 3000, due_date: "2015-11-01 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "December 2015 Rent", total_amount: 3000, due_date: "2015-12-01 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "January 2016 Rent", total_amount: 3000, due_date: "2016-01-01 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "February 2016 Rent", total_amount: 3000, due_date: "2016-02-01 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "March 2016 Rent", total_amount: 3000, due_date: "2016-03-01 00:00:00", household_id: 1, paid: false, bill_status: 3},
+  {name: "April 2016 Rent", total_amount: 3000, due_date: "2016-04-01 00:00:00", household_id: 1, paid: true, bill_status: 1},
+  {name: "January 2016 PSE", total_amount: 104.49, due_date: "2016-01-10 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "January 2016 Internet", total_amount: 75.50, due_date: "2016-01-10 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "December 2015 PSE", total_amount: 92.25, due_date: "2016-12-10 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "December 2015 Seattle City Light", total_amount: 69.02, due_date: "2016-12-10 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "December 2015 Utilities", total_amount: 534.45, due_date: "2016-12-10 00:00:00", household_id: 1, paid: true, bill_status: 3},
+  {name: "December 2015 House Supplies", total_amount: 23.33, due_date: "2016-12-10 00:00:00", household_id: 1, paid: true, bill_status: 3},
 ]
 
 seed_bills.each do |bill|

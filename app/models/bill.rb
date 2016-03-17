@@ -24,16 +24,16 @@ class Bill < ActiveRecord::Base
   end
 
   def set_status
-    if self.shares.none? && self.paid == "f"
+    if self.shares.none? && self.paid == false
       self.bill_status = 0
       "created"
     elsif self.shares.any? { |s| s.paid == false }
       self.bill_status = 1
       "created_unpaid_shares"
-    elsif self.shares.all? { |s| s.paid == true } && self.paid == "f"
+    elsif self.shares.all? { |s| s.paid == true } && self.paid == false
       self.bill_status = 2
       "created_all_shares_paid"
-    elsif self.shares.all? { |s| s.paid == true } && self.paid == "t"
+    elsif self.shares.all? { |s| s.paid == true } && self.paid == true
       self.bill_status = 3
       "bill_paid"
     else
