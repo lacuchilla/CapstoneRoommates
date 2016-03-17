@@ -22,5 +22,6 @@
       </tbody>
     </table>
     <%= link_to "View All Bills for #{@specific_household.name}", household_bills_path(@specific_household.id), class: "btn btn-default" %>
+    <%= link_to "Add Shares to #{@specific_bill.name}", new_household_bill_share_path(@specific_household.id, @specific_bill.id), class: "btn btn-default" %>
   </div>
 </div>

@@ -73,7 +73,7 @@
       </div>
       <div class="form-group">
         <%= b.label :person_responsible %>
-        <%= b.collection_select(:user_id, User.all, :id, :username, prompt: "Select") %>
+        <%= b.collection_select(:user_id, User.all, :id, :name, prompt: "Select") %>
       </div>
       <div class="form-group">
         <%= b.label :paid %>

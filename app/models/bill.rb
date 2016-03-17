@@ -36,7 +36,6 @@ class Bill < ActiveRecord::Base
     elsif self.shares.all? { |s| s.paid == true } && self.paid == "t"
       self.bill_status = 3
       "bill_paid"
-
     else
       "I don't know what status this is"
     end

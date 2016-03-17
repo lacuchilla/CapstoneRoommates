@@ -28,8 +28,6 @@
               <td>There are no bills that have this status.</td>
             </tr>
         <% end %>
-
-
       </tbody>
     </table>
   </div>
@@ -104,15 +102,15 @@
         <% @specific_household.bills.each do |bill| %>
           <% if bill.check_bill_status == "bill_paid" %>
             <tr>
-            <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
-            <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
-            <% @found_bills = true %>
-          </tr>
+              <td><%= link_to "#{bill.name}", household_bill_path(@specific_household.id, bill.id) %></td>
+              <td><%= link_to "View Shares", household_bill_shares_path(@specific_household.id, bill.id), class: "btn btn-default" %></td>
+              <% @found_bills = true %>
+            </tr>
           <% end %>
         <% end %>
         <% if @found_bills != true %>
             <tr>
-            <td>There are no bills that have this status.</td>
+              <td>There are no bills that have this status.</td>
             </tr>
         <% end %>
       </tbody>

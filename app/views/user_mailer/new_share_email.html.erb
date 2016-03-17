@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You have been assigned a share on RoomiePayUp.com</h1>
+    <p>
+      Bill Name: <%= @bill_name %>
+    </p>
+    <p>
+      Share Amount: <%= humanized_money_with_symbol(@share_amount) %>
+    </p>
+    <p>
+      Share Due Date: <%= @share_due_date %>
+    <p>
+       Please render payment, either cash or check in the total amount of the share, to the household financial administrator on or before the due date of the share.
+    </p>
+    <p>
+      If you have any questions, please contact the financial administrator of your household.
+    </p>
+  </body>
+</html>

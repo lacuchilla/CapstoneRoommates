@@ -60,8 +60,10 @@ RSpec.describe BillsController, type: :controller do
     it "creates a bill" do
       new_bill.save
       last_bill = Bill.last
-      post :create, bill_params.merge(household_id: this_household.id)
+      post :create, bill_params, household_id: this_household.id
       new_bill.reload
+      puts new_bill
+      puts last_bill
       expect(Bill.last).to_not eq last_bill
     end
 

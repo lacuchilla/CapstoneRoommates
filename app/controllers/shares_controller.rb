@@ -24,11 +24,17 @@ class SharesController < ApplicationController
     @date = @specific_bill.due_date
     @shares = @specific_bill.shares
     @share.bill = @specific_bill
+    respond_to do |format|
       if @share.save
-        redirect_to new_household_bill_share_path
+        UserMailer.new_share_email(@share).deliver_now
+
+        format.html { redirect_to(@specific_household, notice: 'User was successfully created.') }
+        format.json { render json: @share, status: :created, location: @share }
       else
-        render :new
+        format.html { render action: 'new' }
+        format.json { render json: @share.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   def show
