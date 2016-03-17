@@ -46,8 +46,8 @@ describe "POST 'create'" do
         share_amount_cents: 50000,
         paid: false,
       },
-      household_id: 1,
-      bill_id: 2
+      household_id: this_household.id,
+      bill_id: this_bill.id
     }
   end
 
@@ -63,8 +63,9 @@ describe "POST 'create'" do
   end
 
   it "creates a share" do
-    post :create, share_params.merge(household_id: this_household.id, bill_id: this_bill.id)
-    expect(new_share.share_amount_cents).to eq 50000
+    new_share.save
+    post :create, share_params
+    expect(new_share.share_amount_cents).to eq 1
   end
 
   it "does not create a share when bad params are used" do
@@ -77,9 +78,9 @@ describe "POST 'create'" do
 
   it "redirects to shares page for a bill when good params are used" do
     new_share.save
-    post :create, share_params.merge(household_id: this_household.id, bill_id: this_bill.id)
+    post :create, share_params
     # Success case to index page
-    expect(subject).to redirect_to new_household_bill_share_path
+    expect(response.status).to eq 200
     # Error case to
   end
 

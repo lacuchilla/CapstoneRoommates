@@ -10,13 +10,16 @@ class Bill < ActiveRecord::Base
   enum bill_status: [:created, :created_unpaid_shares, :created_all_shares_paid, :bill_paid]
 
   def amount_remaining_cents
-    amounts = self.shares
-    total_amount_of_shares = 0
-    amounts.each do |a|
-      total_amount_of_shares += a.share_amount_cents
+    if self.shares.length > 0
+      amounts = self.shares
+      total_amount_of_shares = 0
+      amounts.each do |a|
+        total_amount_of_shares += a.share_amount_cents
+      end
+      amount = self.total_amount_cents - total_amount_of_shares
+      return amount
     end
-    amount = self.total_amount_cents - total_amount_of_shares
-    return amount
+    0
   end
 
   def check_bill_status
