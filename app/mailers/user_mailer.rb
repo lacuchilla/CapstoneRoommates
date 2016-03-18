@@ -24,4 +24,19 @@ class UserMailer < ApplicationMailer
           subject: "You have been assigned a share of a bill on RoomiePayUp.com",
           )
   end
+
+  def share_paid_email(share)
+    @share = share
+    @url = 'https://www.roomiepayup.com'
+    @share_amount = share.share_amount
+    @share_due_date = share.due_date
+    @bill = Bill.find(@share.bill_id)
+    @bill_name = @bill.name
+    @user = User.find(share.user_id)
+    @household = Household.find(@user.household_id)
+
+    mail(to: @user.email,
+          subject: "Your payment for your share of #{@bill_name} has been received",
+          )
+  end
 end

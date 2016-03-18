@@ -52,11 +52,16 @@ class SharesController < ApplicationController
 
   def update
     @share = Share.update(params[:id], share_params[:share])
+    respond_to do |format|
       if @share.save
-        redirect_to new_household_bill_share_path
+        UserMailer.share_paid_email(@share).deliver_now
+        format.html { redirect_to(@specific_household, notice: 'User was successfully created.') }
+        format.json { render json: @share, status: :created, location: @share }
       else
-        render :edit
+        format.html { render action: 'new' }
+        format.json { render json: @share.errors, status: :unprocessable_entity }
       end
+    end
     @url = "update"
   end
 
