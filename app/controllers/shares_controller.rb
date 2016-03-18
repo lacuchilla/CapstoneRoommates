@@ -17,10 +17,6 @@ class SharesController < ApplicationController
     @shares = @specific_bill.shares
   end
 
-  def nothing
-
-  end
-
   def create
     @share = Share.new(share_params[:share])
     @specific_bill = Bill.find(params[:bill_id])
