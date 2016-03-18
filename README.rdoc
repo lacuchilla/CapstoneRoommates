@@ -46,17 +46,16 @@ User personas
 Main target user groups are going to be single people in their twenties and thirties renting a living space with two or more other people. This app will encourage more open communication and accountability about bills with the email notifications and the ability to see a list of all bills that have been paid. Their common characteristics will be that they are busy and may not necessarily be forthcoming with talking about finances or already have a system in place to keep track of paid bills. Th
 
 Technology Selections
-Ruby version 2.2.3
-Rails
-Rspec for testing
-Factory Girl for testing
-Bootstrap for styling
-omniauth-twitter for login/logout
-Code Climate for code quality
-Money-rails gem to handle money amounts
-Amazon SES to send emails
-SQLite3 database for development
-Postgres database for production
-OmniAuth usint Twitter to log in
-SSL
-Travis for Continuous Integration
+* Ruby version 2.2.3
+* Rails version 4.2.5
+* Rspec for testing
+* Factory Girl for testing
+* Bootstrap for styling
+* Omniauth-twitter for login/logout
+* Code Climate for code quality
+* Money-rails gem to handle money amounts
+* Amazon SES to send emails
+* SQLite3 database for development
+* Postgres database for production
+* SSL certificate
+* Travis for Continuous Integration
