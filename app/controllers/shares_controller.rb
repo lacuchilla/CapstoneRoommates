@@ -52,6 +52,7 @@ class SharesController < ApplicationController
 
   def update
     @share = Share.update(params[:id], share_params[:share])
+    @specific_household = Household.find(params[:household_id])
     respond_to do |format|
       if @share.save
         UserMailer.share_paid_email(@share).deliver_now
