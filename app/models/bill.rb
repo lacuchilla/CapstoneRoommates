@@ -19,7 +19,7 @@ class Bill < ActiveRecord::Base
       amount = self.total_amount_cents - total_amount_of_shares
       return amount
     end
-    # 0
+    0
   end
 
   def check_bill_status
