@@ -54,7 +54,7 @@ class SharesController < ApplicationController
     @share = Share.update(params[:id], share_params[:share])
     @specific_household = Household.find(params[:household_id])
     respond_to do |format|
-      if @share.paid == true && @share.save
+      if (@share.paid == true) && @share.save
         UserMailer.share_paid_email(@share).deliver_now
         format.html { redirect_to(@specific_household, notice: 'Share has been updated.') }
         format.json { render json: @share, status: :updated, location: @share }
