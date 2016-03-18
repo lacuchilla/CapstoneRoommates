@@ -116,7 +116,7 @@ describe "PATCH 'update'" do
     }
   end
 
-  it "updates the share with good params" do
+  xit "updates the share with good params" do
     new_share.save
     before_update = new_share.attributes
     patch :update, share_params.merge(household_id: this_household.id, bill_id: this_bill.id, id: new_share.id)
@@ -124,7 +124,7 @@ describe "PATCH 'update'" do
     expect(new_share.attributes).to_not eq before_update
   end
 
-  it "does not update the share with bad params" do
+  xit "does not update the share with bad params" do
     new_share.save
     patch :update, bad_share_params.merge(household_id: this_household.id, bill_id: this_bill.id, id: new_share.id)
     new_share.reload

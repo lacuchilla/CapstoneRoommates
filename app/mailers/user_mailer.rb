@@ -31,8 +31,9 @@ class UserMailer < ApplicationMailer
     @share_amount = share.share_amount
     @share_due_date = share.due_date
     @bill = Bill.find(@share.bill_id)
+    @share_user_id = @share.user_id
     @bill_name = @bill.name
-    @user = User.find(share.user_id)
+    @user = User.find(@share_user_id)
     @household = Household.find(@user.household_id)
 
     mail(to: @user.email,
