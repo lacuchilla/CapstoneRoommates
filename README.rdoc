@@ -15,28 +15,7 @@ roomiepayup is an application that allows a user to:
 * Mark a bill as paid once the user has paid the bill using money collected from housemates
 
 
-manage their household bills  This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version: 2.2.3
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
 Please feel free to use a different markup language if you do not plan to run
@@ -67,11 +46,17 @@ User personas
 Main target user groups are going to be single people in their twenties and thirties renting a living space with two or more other people. This app will encourage more open communication and accountability about bills with the email notifications and the ability to see a list of all bills that have been paid. Their common characteristics will be that they are busy and may not necessarily be forthcoming with talking about finances or already have a system in place to keep track of paid bills. Th
 
 Technology Selections
-
+Ruby version 2.2.3
 Rails
-Action Mailer: http://guides.rubyonrails.org/action_mailer_basics.html
-OmniAuth
+Rspec for testing
+Factory Girl for testing
+Bootstrap for styling
+omniauth-twitter for login/logout
+Code Climate for code quality
+Money-rails gem to handle money amounts
+Amazon SES to send emails
+SQLite3 database for development
+Postgres database for production
+OmniAuth usint Twitter to log in
 SSL
-Ability to accept online payments (currently planning on using Stripe but open to using another technology)
 Travis for Continuous Integration
-Trello Link
