@@ -8,6 +8,7 @@ gem 'money-rails'
 gem 'rails', ">= 8.0.0"
 # Use sqlite3 as the database for Active Record
 
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,8 +27,8 @@ gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc'
 
-gem 'omniauth'
-gem 'omniauth-oauth2', '~> 1.3.1'
+gem "omniauth", ">= 2.0.0"
+gem 'omniauth-oauth2'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
